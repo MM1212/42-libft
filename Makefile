@@ -6,7 +6,7 @@
 #    By: martiper <martiper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 15:25:36 by martiper          #+#    #+#              #
-#    Updated: 2023/05/13 10:43:47 by martiper         ###   ########.fr        #
+#    Updated: 2023/05/13 11:20:35 by martiper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,7 +107,7 @@ all: $(NAME)
 $(NAME) : $(OBJS)
 	@mkdir -p $(dir $@)
 	@ar -rcs $(NAME) $(OBJS)
-	@echo "$(TAG) $(YELLOW)compiled$(RESET)!"
+	@echo "$(TAG) compiled version $(YELLOW)$$(cat VERSION)$(RESET)!"
 
 $(OBJ_DIR)/%.o: %.c
 	@echo "$(TAG) building $(YELLOW)$<$(RESET).."
