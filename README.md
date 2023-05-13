@@ -33,7 +33,9 @@ make re
 ### Makefile
 ```Makefile
 LIBFT_PATH = libs/libft
-LIBFT_ARCH = $(addprefix $(LIBFT_PATH)/,bin/,libft.a)
+LIBFT_BIN = $(addprefix $(LIBFT_PATH)/,bin)
+LIBFT_INCLUDES = $(addprefix $(LIBFT_PATH)/,includes/)
+LIBFT_ARCH = $(addprefix $(LIBFT_BIN)/,libft.a)
 
 $(LIBFT_ARCH):
   @make -C $(LIBFT_PATH)
