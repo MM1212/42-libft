@@ -19,7 +19,7 @@ git submodule update --init --recursive
 ## Usage
 
 ### Bash
-```bash
+```
 # Compile
 make
 # Cleanup
@@ -31,7 +31,7 @@ make re
 ---
 
 ### Makefile
-```Makefile
+```
 LIBFT_PATH = libs/libft
 LIBFT_ARCH = $(addprefix $(LIBFT_PATH)/,bin/,libft.a)
 
