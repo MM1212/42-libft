@@ -6,7 +6,7 @@
 #    By: martiper <martiper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 15:25:36 by martiper          #+#    #+#              #
-#    Updated: 2023/05/13 11:20:35 by martiper         ###   ########.fr        #
+#    Updated: 2023/05/13 22:29:19 by martiper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ PROJECT_NAME = Libft
 SRCS_DIR = src
 
 SRCS =	ft_atoi.c \
+		ft_atol.c \
 		ft_is_ascii.c \
 		ft_isdigit.c \
 		ft_memcmp.c \
@@ -116,7 +117,7 @@ $(OBJ_DIR)/%.o: %.c
 
 clean:
 	@printf "$(TAG) cleaned $(YELLOW)objects!$(RESET)\n"
-	@rm -rf $(OBJS) $(OBJ_DIR) 
+	@rm -rf $(OBJS) $(OBJ_DIR)
 
 fclean: clean
 	@printf "$(TAG) cleaned $(YELLOW)archive!$(RESET)\n"
