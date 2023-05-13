@@ -9,7 +9,7 @@ It is used in other projects of the 42 school.
 
 *It is better to use this as a submodule of your project.*
 
-```bash
+```
 git submodule add git@github.com:MM1212/42-libft.git libs/libft
 git submodule update --init --recursive
 ```
