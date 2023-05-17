@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 12:47:24 by mm                #+#    #+#             */
-/*   Updated: 2023/05/17 09:18:18 by martiper         ###   ########.fr       */
+/*   Updated: 2023/05/17 12:51:42 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,7 @@ int	ft_printf(const char *format, ...)
 			count++;
 			continue ;
 		}
-		ft_putstr_fd("\033[93m", 1);
 		count += ft_format(format[++idx], list, ft_handle_bonus(format, &idx));
-		ft_putstr_fd("\033[39m", 1);
 		idx++;
 	}
 	va_end(list);
