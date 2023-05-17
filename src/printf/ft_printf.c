@@ -6,13 +6,17 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 12:47:24 by mm                #+#    #+#             */
-/*   Updated: 2023/05/17 12:51:42 by martiper         ###   ########.fr       */
+/*   Updated: 2023/05/17 13:03:49 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_internal.h"
 
-static size_t	ft_format(const char mod, va_list args, t_ft_printf_flags flags)
+size_t	ft_def_printf_format(\
+	const char mod, \
+	va_list args, \
+	t_ft_printf_flags flags \
+)
 {
 	if (mod == 'c')
 		return (ft_def_printf_putchar(va_arg(args, int), flags));
@@ -39,7 +43,7 @@ static size_t	ft_format(const char mod, va_list args, t_ft_printf_flags flags)
 		return (0);
 }
 
-static t_ft_printf_flags	ft_handle_bonus(const char *format, size_t *idx)
+t_ft_printf_flags	ft_def_printf_flags(const char *format, size_t *idx)
 {
 	t_ft_printf_flags	flags;
 
@@ -86,7 +90,8 @@ int	ft_printf(const char *format, ...)
 			count++;
 			continue ;
 		}
-		count += ft_format(format[++idx], list, ft_handle_bonus(format, &idx));
+		count += ft_def_printf_format(format[++idx], list, \
+			ft_def_printf_flags(format, &idx));
 		idx++;
 	}
 	va_end(list);

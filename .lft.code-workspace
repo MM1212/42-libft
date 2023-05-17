@@ -63,7 +63,8 @@
 		"random": "c",
 		"limits": "c",
 		"semaphore": "c",
-		"algorithm": "c"
+		"algorithm": "c",
+		"ft_printf_internal.h": "c"
 	},
 	"files.exclude": {
 		"**/*.o": true,
