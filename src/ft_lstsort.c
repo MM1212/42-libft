@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 11:52:10 by martiper          #+#    #+#             */
-/*   Updated: 2023/05/11 11:55:48 by martiper         ###   ########.fr       */
+/*   Updated: 2023/05/17 09:13:30 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	ft_lstsort(t_list *lst, int (*fn)(void *a, void *b))
 	t_list	*tmp;
 	void	*content;
 
+	if (!lst || !fn)
+		return ;
 	while (lst)
 	{
 		tmp = lst->next;

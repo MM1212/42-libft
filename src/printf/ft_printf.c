@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 12:47:24 by mm                #+#    #+#             */
-/*   Updated: 2023/05/07 00:34:08 by martiper         ###   ########.fr       */
+/*   Updated: 2023/05/17 09:18:18 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ int	ft_printf(const char *format, ...)
 	size_t	idx;
 	size_t	count;
 
+	if (!format)
+		return (-1);
 	va_start(list, format);
 	idx = 0;
 	count = 0;

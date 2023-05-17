@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 22:55:00 by mm                #+#    #+#             */
-/*   Updated: 2023/05/13 22:28:12 by martiper         ###   ########.fr       */
+/*   Updated: 2023/05/17 09:17:20 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ long	ft_atol(const char *str)
 	long	result;
 
 	i = 0;
+	if (!str)
+		return (0);
 	while (ft_is_whitespace(str[i]))
 		i++;
 	signal = 1;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mm <mm@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 22:30:38 by mm                #+#    #+#             */
-/*   Updated: 2023/04/12 15:49:25 by mm               ###   ########.fr       */
+/*   Updated: 2023/05/17 09:09:03 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ char	*ft_strrchr(const char *s, int c)
 {
 	const char	*orig;
 
+	if (!s)
+		return (NULL);
 	orig = s;
 	while (*s++)
 		;

@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 20:20:33 by mm                #+#    #+#             */
-/*   Updated: 2023/04/19 23:21:43 by martiper         ###   ########.fr       */
+/*   Updated: 2023/05/17 09:14:03 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	void	*new_content;
 
 	list = NULL;
+	if (!f)
+		return (NULL);
 	while (lst)
 	{
 		new_content = f(lst->content);

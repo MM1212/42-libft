@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 20:06:02 by mm                #+#    #+#             */
-/*   Updated: 2023/04/28 10:40:53 by martiper         ###   ########.fr       */
+/*   Updated: 2023/05/17 09:15:41 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	t_list	*node;
 	t_list	*tmp;
 
+	if (!lst)
+		return ;
 	node = *lst;
 	while (node)
 	{

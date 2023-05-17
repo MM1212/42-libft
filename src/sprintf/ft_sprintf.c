@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 12:47:24 by mm                #+#    #+#             */
-/*   Updated: 2023/05/07 02:26:11 by martiper         ###   ########.fr       */
+/*   Updated: 2023/05/17 09:19:39 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,10 @@ int	ft_sprintf(char *str, size_t size, const char *format, ...)
 
 	idx = 0;
 	count = 0;
+	if (!str || !format)
+		return (-1);
 	va_start(list, format);
-	buffer.size = size;
-	buffer.buffer = str;
+	buffer = (t_ft_sprintf_buffer){.size = size, .buffer = str};
 	while (format[idx] && count < size - 1)
 	{
 		if (format[idx] != '%')

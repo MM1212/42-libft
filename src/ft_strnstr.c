@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 22:48:19 by mm                #+#    #+#             */
-/*   Updated: 2023/04/21 12:27:33 by martiper         ###   ########.fr       */
+/*   Updated: 2023/05/17 09:09:17 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	size_t	j;
 	size_t	idx;
 
+	if (!big || !little)
+		return (NULL);
 	if (*little == '\0')
 		return ((char *)big);
 	i = 0;

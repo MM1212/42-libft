@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 07:15:22 by martiper          #+#    #+#             */
-/*   Updated: 2023/05/09 20:15:07 by martiper         ###   ########.fr       */
+/*   Updated: 2023/05/17 09:11:20 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ bool	ft_str_endswith(const char *str, const char *substr)
 	size_t	str_len;
 	size_t	substr_len;
 
+	if (!str || !substr)
+		return (false);
 	str_len = ft_strlen(str);
 	substr_len = ft_strlen(substr);
 	if (substr_len > str_len)
