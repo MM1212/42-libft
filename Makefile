@@ -84,7 +84,7 @@ SRC_FILES = $(addprefix $(SRCS_DIR)/, $(SRCS))
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Iincludes
+CFLAGS = -Wall -Wextra -Werror -Iincludes -g
 
 ARCH_DIR = bin
 NAME =	$(addprefix $(ARCH_DIR)/, libft.a)
