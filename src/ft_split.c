@@ -6,16 +6,15 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 14:30:36 by martiper          #+#    #+#             */
-/*   Updated: 2023/05/05 01:04:03 by martiper         ###   ########.fr       */
+/*   Updated: 2023/05/18 11:59:27 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdbool.h>
 
 static void	count_letters_and_words(
 	const char *str,
-	const char delimiter,
+	const char *set,
 	size_t *letters,
 	size_t *words)
 {
@@ -26,7 +25,7 @@ static void	count_letters_and_words(
 	is_on_word = false;
 	while (*str)
 	{
-		if (*str != delimiter)
+		if (ft_strchr(set, *str) == NULL)
 		{
 			if (!is_on_word)
 			{
@@ -43,7 +42,7 @@ static void	count_letters_and_words(
 
 static void	fill_buffers(
 	const char *str,
-	const char delimiter,
+	const char *set,
 	char **ptrs,
 	char *buffer)
 {
@@ -52,7 +51,7 @@ static void	fill_buffers(
 	is_on_word = false;
 	while (*str)
 	{
-		if (*str != delimiter)
+		if (ft_strchr(set, *str) == NULL)
 		{
 			*buffer = *str;
 			if (!is_on_word)
@@ -109,7 +108,7 @@ void	ft_split_free(
 
 char	**ft_split(
 	char const *s,
-	char c)
+	char *set)
 {
 	size_t	words;
 	size_t	letters;
@@ -117,7 +116,7 @@ char	**ft_split(
 	char	**tmp;
 	char	*buffer;
 
-	count_letters_and_words(s, c, &letters, &words);
+	count_letters_and_words(s, set, &letters, &words);
 	ptrs = ft_calloc(sizeof(char *), words + 1);
 	if (!ptrs)
 		return (NULL);
@@ -125,7 +124,7 @@ char	**ft_split(
 	if (!buffer)
 		return (cleanup_malloc_null(ptrs, buffer, 0));
 	ptrs[words] = NULL;
-	fill_buffers(s, c, ptrs, buffer);
+	fill_buffers(s, set, ptrs, buffer);
 	tmp = ptrs;
 	while (*tmp)
 	{
