@@ -6,7 +6,7 @@
 #    By: martiper <martiper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 15:25:36 by martiper          #+#    #+#              #
-#    Updated: 2023/05/13 22:29:19 by martiper         ###   ########.fr        #
+#    Updated: 2023/05/20 14:12:26 by martiper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRCS =	ft_atoi.c \
 		ft_strmapi.c \
 		ft_striteri.c \
 		ft_str_startswith.c \
+		ft_strrep.c \
 		ft_putchar_fd.c \
 		ft_putstr_fd.c \
 		ft_putendl_fd.c \
