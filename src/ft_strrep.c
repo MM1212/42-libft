@@ -6,13 +6,13 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 13:56:43 by martiper          #+#    #+#             */
-/*   Updated: 2023/05/20 14:09:53 by martiper         ###   ########.fr       */
+/*   Updated: 2023/05/20 14:14:15 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrep(char **str, int from, int len, char *rep)
+char	*ft_strrep(char **str, size_t from, size_t len, char *rep)
 {
 	size_t		str_len;
 	size_t		new_len;
