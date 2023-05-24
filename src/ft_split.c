@@ -6,13 +6,13 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 14:30:36 by martiper          #+#    #+#             */
-/*   Updated: 2023/05/18 11:59:27 by martiper         ###   ########.fr       */
+/*   Updated: 2023/05/24 16:33:50 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	count_letters_and_words(
+static bool	count_letters_and_words(
 	const char *str,
 	const char *set,
 	size_t *letters,
@@ -20,6 +20,8 @@ static void	count_letters_and_words(
 {
 	bool	is_on_word;
 
+	if (!str)
+		return (false);
 	*letters = 0;
 	*words = 0;
 	is_on_word = false;
@@ -38,6 +40,7 @@ static void	count_letters_and_words(
 			is_on_word = false;
 		str++;
 	}
+	return (true);
 }
 
 static void	fill_buffers(
@@ -116,14 +119,14 @@ char	**ft_split(
 	char	**tmp;
 	char	*buffer;
 
-	count_letters_and_words(s, set, &letters, &words);
+	if (!count_letters_and_words(s, set, &letters, &words))
+		return (NULL);
 	ptrs = ft_calloc(sizeof(char *), words + 1);
 	if (!ptrs)
 		return (NULL);
 	buffer = ft_calloc(sizeof(char), letters + words);
 	if (!buffer)
 		return (cleanup_malloc_null(ptrs, buffer, 0));
-	ptrs[words] = NULL;
 	fill_buffers(s, set, ptrs, buffer);
 	tmp = ptrs;
 	while (*tmp)
