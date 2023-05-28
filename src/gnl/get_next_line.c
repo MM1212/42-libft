@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 21:21:29 by mm                #+#    #+#             */
-/*   Updated: 2023/05/09 20:40:59 by martiper         ###   ########.fr       */
+/*   Updated: 2023/05/28 19:49:43 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ static void	*fallback_clear_cache(t_data *cache)
 	if (cache->buffer)
 		free(cache->buffer);
 	cache->defined = false;
+	cache->buffer = NULL;
 	return (NULL);
 }
 
