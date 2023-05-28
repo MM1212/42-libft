@@ -6,16 +6,14 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 12:08:52 by mm                #+#    #+#             */
-/*   Updated: 2023/04/21 12:27:33 by martiper         ###   ########.fr       */
+/*   Updated: 2023/05/28 23:19:32 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "limits.h"
 
-#define INT_MAX_2 147483648
-
-size_t	compute_integer_size(int n)
+static size_t	compute_integer_size(long n)
 {
 	size_t	count;
 
@@ -23,13 +21,7 @@ size_t	compute_integer_size(int n)
 	if (n <= 0)
 	{
 		count++;
-		if (n == INT_MIN)
-		{
-			n = INT_MAX_2;
-			count++;
-		}
-		else
-			n = -n;
+		n = -n;
 	}
 	while (n > 0)
 	{
@@ -39,7 +31,7 @@ size_t	compute_integer_size(int n)
 	return (count);
 }
 
-static void	sanitize_input(char *str, int *n)
+static void	sanitize_input(char *str, long *n)
 {
 	size_t	tmp_count;
 
@@ -47,23 +39,19 @@ static void	sanitize_input(char *str, int *n)
 	if (*n < 0)
 	{
 		str[tmp_count++] = '-';
-		if (*n == INT_MIN)
-		{
-			*n = INT_MAX_2;
-			str[tmp_count++] = '2';
-		}
-		else
-			*n = -(*n);
+		*n = -(*n);
 	}
 	else if (*n == 0)
 		str[tmp_count++] = '0';
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(int nbr)
 {
 	char	*str;
+	long	n;
 	size_t	length;
 
+	n = nbr;
 	length = compute_integer_size(n);
 	str = malloc((length + 1) * sizeof(char));
 	if (!str)

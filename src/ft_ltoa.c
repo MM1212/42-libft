@@ -6,14 +6,14 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 12:08:52 by mm                #+#    #+#             */
-/*   Updated: 2023/05/28 23:17:02 by martiper         ###   ########.fr       */
+/*   Updated: 2023/05/28 23:18:52 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <limits.h>
 
-size_t	compute_integer_size(long long n)
+static size_t	compute_integer_size(long long n)
 {
 	size_t	count;
 
