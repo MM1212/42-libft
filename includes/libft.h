@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 19:33:43 by mm                #+#    #+#             */
-/*   Updated: 2023/05/28 23:16:36 by martiper         ###   ########.fr       */
+/*   Updated: 2023/05/31 19:08:27 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef struct s_list
 	struct s_list	*next;
 	struct s_list	*prev;
 }	t_list;
+
+typedef long long	t_ft_ll;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -50,6 +52,7 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
 int		ft_atoi(const char *nptr);
 long	ft_atol(const char *nptr);
+t_ft_ll	ft_atoll(const char *nptr);
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strdup(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
