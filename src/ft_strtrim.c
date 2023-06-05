@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 11:53:22 by mm                #+#    #+#             */
-/*   Updated: 2023/04/21 12:27:33 by martiper         ###   ########.fr       */
+/*   Updated: 2023/06/05 12:10:59 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,18 @@ static void	compute_size_from_trimmed_chars(
 	str_length = ft_strlen(str);
 	ptr = str;
 	*start_trim = 0;
-	while (is_char_in_set(*ptr++, set) && ptr < (str + str_length))
+	while (is_char_in_set(*ptr, set) && ptr < (str + str_length))
+	{
+		ptr++;
 		(*start_trim)++;
+	}
 	ptr = str + str_length - 1;
 	*end_trim = 0;
-	while (is_char_in_set(*ptr--, set) && (ptr >= (str)))
+	while (is_char_in_set(*ptr, set) && (ptr >= (str)))
+	{
+		ptr--;
 		(*end_trim)++;
+	}
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
