@@ -6,7 +6,7 @@
 #    By: martiper <martiper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 15:25:36 by martiper          #+#    #+#              #
-#    Updated: 2023/05/28 23:16:02 by martiper         ###   ########.fr        #
+#    Updated: 2023/06/08 12:08:43 by martiper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,6 +65,8 @@ SRCS =	ft_atoi.c \
 		ft_lstfind.c \
 		ft_lstremove.c \
 		ft_lstsort.c \
+		ft_lstgoto.c \
+		ft_isnbr.c \
 		printf/ft_printf_putaddress.c \
 		printf/ft_printf_putchar.c \
 		printf/ft_printf_putnbrs.c \
