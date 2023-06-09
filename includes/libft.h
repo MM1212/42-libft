@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 19:33:43 by mm                #+#    #+#             */
-/*   Updated: 2023/05/31 19:08:27 by martiper         ###   ########.fr       */
+/*   Updated: 2023/06/08 12:08:05 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int		ft_isdigit(int c);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
+bool	ft_isnbr(char *str);
 size_t	ft_strlen(const char *str);
 void	*ft_memset(void *s, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
@@ -45,6 +46,7 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
+bool	ft_strchr_set(const char *str, const char *set);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_strcmp(const char *s1, const char *s2);
 void	*ft_memchr(const void *s, int c, size_t n);
@@ -85,5 +87,9 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 t_list	*ft_lstfind(t_list *lst, int (*f)(void *));
 void	ft_lstremove(t_list **list, t_list *node, void (*del)(void *));
 void	ft_lstsort(t_list *lst, int (*fn)(void *a, void *b));
+t_list	*ft_lstgoto_top(t_list **lst);
+t_list	*ft_lstgoto_end(t_list **lst);
+t_list	*ft_lstgoto(t_list **lst, int index);
+void	ft_lstfclear(t_list **lst, void (*del)(void *));
 
 #endif
