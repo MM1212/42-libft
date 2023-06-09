@@ -6,16 +6,16 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 12:54:10 by martiper          #+#    #+#             */
-/*   Updated: 2023/06/09 12:54:47 by martiper         ###   ########.fr       */
+/*   Updated: 2023/06/09 13:01:05 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_countchar(const char *str, char c)
+int	ft_countchar(const char *str, char c)
 {
 	size_t	i;
-	size_t	count;
+	int		count;
 
 	if (!str)
 		return (0);

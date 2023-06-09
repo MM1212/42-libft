@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 19:33:43 by mm                #+#    #+#             */
-/*   Updated: 2023/06/09 12:57:39 by martiper         ###   ########.fr       */
+/*   Updated: 2023/06/09 13:00:56 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 bool	ft_str_startswith(const char *str, const char *substr);
 bool	ft_str_endswith(const char *str, const char *substr);
 char	*ft_strrep(char **str, size_t from, size_t len, char *rep);
-size_t	ft_countchar(const char *str, char c);
+int		ft_countchar(const char *str, char c);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
