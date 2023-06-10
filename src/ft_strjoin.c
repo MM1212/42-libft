@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 11:47:05 by mm                #+#    #+#             */
-/*   Updated: 2023/06/09 13:38:04 by martiper         ###   ########.fr       */
+/*   Updated: 2023/06/10 18:05:12 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		idx += s1_length;
 	}
 	if (s2)
+	{
 		ft_strlcpy(join + idx, s2, s2_length + 1);
+		idx += s2_length;
+	}
 	join[idx] = '\0';
 	return (join);
 }
