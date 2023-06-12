@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 00:07:03 by martiper          #+#    #+#             */
-/*   Updated: 2023/05/07 02:26:03 by martiper         ###   ########.fr       */
+/*   Updated: 2023/06/12 02:40:41 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,19 @@ size_t	ft_def_sprintf_putfloat(t_ft_sprintf_buffer *buffer, double n,
 	double		dec;
 	int			i;
 
-	count = ft_def_sprintf_putnbr(buffer, (int)n, flags);
+	count = ft_def_sprintf_putnbr(buffer, (long)n, flags);
 	if (flags.precision > 0)
 	{
 		count += ft_def_sprintf_putchar(buffer, '.');
-		dec = n - (int)n;
+		dec = n - ft_abs((long)n);
 		i = 0;
 		while (i < flags.precision)
 			i++;
 		while (i-- > 0)
 		{
 			dec *= 10;
-			count += ft_def_sprintf_putnbr(buffer, (int)dec, flags);
-			dec -= (int)dec;
+			count += ft_def_sprintf_putnbr(buffer, (long)dec, flags);
+			dec -= (long)dec;
 		}
 	}
 	return (count);
