@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 00:07:03 by martiper          #+#    #+#             */
-/*   Updated: 2023/06/12 02:39:44 by martiper         ###   ########.fr       */
+/*   Updated: 2023/06/12 03:29:29 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,15 @@ size_t	ft_def_printf_putfloat(double n, t_ft_printf_flags flags)
 	double		dec;
 	int			i;
 
-	len = ft_def_printf_putnbr((long)n, flags);
+	len = 0;
+	if (n < 0 && (long)n == 0)
+		len += ft_def_printf_putchar('-', flags);
+	len += ft_def_printf_putnbr((long)n, flags);
 	if (flags.precision > 0)
 	{
 		ft_def_printf_putchar('.', flags);
 		len++;
-		dec = n - ft_abs((long)n);
+		dec = ft_absf(n - ft_abs((long)n));
 		i = 0;
 		while (i < flags.precision)
 			i++;
