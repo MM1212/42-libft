@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 19:49:55 by mm                #+#    #+#             */
-/*   Updated: 2023/05/17 09:16:20 by martiper         ###   ########.fr       */
+/*   Updated: 2023/06/20 17:32:19 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 		return ;
 	new->prev = NULL;
 	new->next = *lst;
-	(*lst)->prev = new;
+	if (*lst)
+		(*lst)->prev = new;
 	*lst = new;
 }
