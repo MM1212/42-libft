@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_vsprintf_putstr.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 22:06:16 by martiper          #+#    #+#             */
-/*   Updated: 2023/11/15 22:09:51 by martiper         ###   ########.fr       */
+/*   Created: 2023/04/12 11:10:44 by mm                #+#    #+#             */
+/*   Updated: 2023/11/15 22:18:00 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf/ft_printf.h"
+#include "ft_vsprintf_internal.h"
 
-int	ft_printf(const char *format, ...)
+size_t	ft_def_sprintf_putstr(t_ft_sprintf_buffer *buffer, const char *str)
 {
-	va_list	args;
-	int		count;
+	size_t	count;
 
-	va_start(args, format);
-	count = ft_vprintf(format, args);
-	va_end(args);
+	if (!str)
+		return (ft_def_sprintf_putstr(buffer, "(null)"));
+	count = ft_strlen(str);
+	if (count > buffer->size)
+		count = buffer->size;
+	if (buffer->size > 0)
+	{
+		ft_memmove(buffer->buffer, str, count);
+		buffer->buffer += count;
+		buffer->size -= count;
+	}
 	return (count);
 }

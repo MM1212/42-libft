@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sprintf_putchar.c                               :+:      :+:    :+:   */
+/*   ft_strjoin_mult.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 11:12:26 by mm                #+#    #+#             */
-/*   Updated: 2023/05/07 01:25:41 by martiper         ###   ########.fr       */
+/*   Created: 2023/11/15 21:41:36 by martiper          #+#    #+#             */
+/*   Updated: 2023/11/15 21:43:28 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_sprintf_internal.h"
+#include "libft.h"
+#include <stdarg.h>
 
-size_t	ft_def_sprintf_putchar(t_ft_sprintf_buffer *buffer, const char c)
+char	*ft_strjoin_mult(size_t count, ...)
 {
-	if (buffer->size <= 0)
-		return (0);
-	*buffer->buffer++ = c;
-	buffer->size--;
-	return (1);
+	char	*join;
+	char	*tmp;
+	va_list	args;
+
+	va_start(args, count);
+	join = ft_strdup("");
+	while (count--)
+	{
+		tmp = join;
+		join = ft_strjoin(join, va_arg(args, char *));
+		free(tmp);
+	}
+	va_end(args);
+	return (join);
 }

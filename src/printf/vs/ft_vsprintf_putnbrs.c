@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sprintf_putnbrs.c                               :+:      :+:    :+:   */
+/*   ft_vsprintf_putnbrs.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:15:07 by mm                #+#    #+#             */
-/*   Updated: 2023/05/07 01:45:49 by martiper         ###   ########.fr       */
+/*   Updated: 2023/11/15 22:17:46 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_sprintf_internal.h"
+#include "ft_vsprintf_internal.h"
 #include <limits.h>
 
 #define NUMERIC_CHARS "0123456789"
@@ -21,7 +21,7 @@
 size_t	ft_def_sprintf_putnbr(\
 	t_ft_sprintf_buffer *buffer, \
 	long long n, \
-	t_ft_sprintf_flags flags \
+	t_ft_printf_flags flags \
 )
 {
 	char	*ptr;
@@ -40,8 +40,11 @@ size_t	ft_def_sprintf_putnbr(\
 	return (count);
 }
 
-size_t	ft_def_sprintf_putnbr_unsigned(t_ft_sprintf_buffer *buffer,
-			unsigned long long n, t_ft_sprintf_flags flags)
+size_t	ft_def_sprintf_putnbr_unsigned(\
+	t_ft_sprintf_buffer *buffer, \
+	unsigned long long n, \
+	t_ft_printf_flags flags \
+)
 {
 	size_t	count;
 
@@ -53,8 +56,11 @@ size_t	ft_def_sprintf_putnbr_unsigned(t_ft_sprintf_buffer *buffer,
 	return (count);
 }
 
-static size_t	puthexadecimal(
-	t_ft_sprintf_buffer *buffer, unsigned long long n, int upper)
+static size_t	puthexadecimal(\
+	t_ft_sprintf_buffer *buffer, \
+	unsigned long long n, \
+	int upper \
+)
 {
 	size_t	count;
 
@@ -68,8 +74,12 @@ static size_t	puthexadecimal(
 	return (count);
 }
 
-size_t	ft_def_sprintf_puthexadecimal(t_ft_sprintf_buffer *buffer,
-			unsigned long long n, int upper, t_ft_sprintf_flags flags)
+size_t	ft_def_sprintf_puthexadecimal(\
+	t_ft_sprintf_buffer *buffer, \
+	unsigned long long n, \
+	int upper, \
+	t_ft_printf_flags flags \
+)
 {
 	size_t	count;
 
