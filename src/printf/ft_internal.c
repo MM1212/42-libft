@@ -6,13 +6,13 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 21:50:19 by martiper          #+#    #+#             */
-/*   Updated: 2023/11/15 22:08:16 by martiper         ###   ########.fr       */
+/*   Updated: 2023/11/15 22:47:55 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf/ft_printf_int_flags.h"
 
-t_ft_printf_flags	ft_def_vfprintf_flags(const char *format, size_t *idx)
+t_ft_printf_flags	ft_def_printf_flags(const char *format, size_t *idx)
 {
 	t_ft_printf_flags	flags;
 

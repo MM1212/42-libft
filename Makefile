@@ -6,7 +6,7 @@
 #    By: martiper <martiper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 15:25:36 by martiper          #+#    #+#              #
-#    Updated: 2023/11/15 22:20:16 by martiper         ###   ########.fr        #
+#    Updated: 2023/11/15 22:48:02 by martiper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,6 +70,7 @@ SRCS =	ft_atoi.c \
 		ft_isnbr.c \
 		ft_countchar.c \
 		ft_abs.c \
+		printf/ft_internal.c \
 		printf/vf/ft_vfprintf_putaddress.c \
 		printf/vf/ft_vfprintf_putchar.c \
 		printf/vf/ft_vfprintf_putnbrs.c \
@@ -86,7 +87,6 @@ SRCS =	ft_atoi.c \
 		printf/ft_printf.c \
 		printf/ft_sprintf.c \
 		printf/ft_vprintf.c \
-		printf/ft_internal.c \
 		gnl/get_next_line_utils.c \
 		gnl/get_next_line.c \
 
