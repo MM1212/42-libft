@@ -6,7 +6,7 @@
 #    By: martiper <martiper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 15:25:36 by martiper          #+#    #+#              #
-#    Updated: 2023/12/21 18:52:48 by martiper         ###   ########.fr        #
+#    Updated: 2023/12/21 18:53:50 by martiper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ SRCS =	ft_atoi.c \
 		ft_strrchr.c \
 		ft_substr.c \
 		ft_strjoin.c \
+		ft_strjoin_mult.c \
 		ft_strtrim.c \
 		ft_itoa.c \
 		ft_ltoa.c \
@@ -70,20 +71,26 @@ SRCS =	ft_atoi.c \
 		ft_isnbr.c \
 		ft_countchar.c \
 		ft_abs.c \
-		printf/ft_printf_putaddress.c \
-		printf/ft_printf_putchar.c \
-		printf/ft_printf_putnbrs.c \
-		printf/ft_printf_putstr.c \
-		printf/ft_printf_putfloat.c \
+		printf/ft_internal.c \
+		printf/vf/ft_vfprintf_putaddress.c \
+		printf/vf/ft_vfprintf_putchar.c \
+		printf/vf/ft_vfprintf_putnbrs.c \
+		printf/vf/ft_vfprintf_putstr.c \
+		printf/vf/ft_vfprintf_putfloat.c \
+		printf/vf/ft_vfprintf.c \
+		printf/vs/ft_vsprintf_putaddress.c \
+		printf/vs/ft_vsprintf_putchar.c \
+		printf/vs/ft_vsprintf_putnbrs.c \
+		printf/vs/ft_vsprintf_putstr.c \
+		printf/vs/ft_vsprintf_putfloat.c \
+		printf/vs/ft_vsprintf.c \
+		printf/ft_fprintf.c \
 		printf/ft_printf.c \
+		printf/ft_sprintf.c \
+		printf/ft_vprintf.c \
 		gnl/get_next_line_utils.c \
 		gnl/get_next_line.c \
-		sprintf/ft_sprintf_putaddress.c \
-		sprintf/ft_sprintf_putchar.c \
-		sprintf/ft_sprintf_putnbrs.c \
-		sprintf/ft_sprintf_putstr.c \
-		sprintf/ft_sprintf_putfloat.c \
-		sprintf/ft_sprintf.c
+
 
 OBJ_DIR = objs
 
@@ -130,6 +137,7 @@ fclean: clean
 	@printf "$(TAG) cleaned $(YELLOW)archive!$(RESET)\n"
 	@rm -f $(NAME)
 
-re: fclean all
+re: fclean
+	@$(MAKE) all --no-print-directory -j $(shell nproc)
 
 .PHONY : all clean fclean re

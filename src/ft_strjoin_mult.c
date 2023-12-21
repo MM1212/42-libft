@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sprintf.h                                       :+:      :+:    :+:   */
+/*   ft_strjoin_mult.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 12:45:12 by mm                #+#    #+#             */
-/*   Updated: 2023/05/07 00:30:16 by martiper         ###   ########.fr       */
+/*   Created: 2023/11/15 21:41:36 by martiper          #+#    #+#             */
+/*   Updated: 2023/11/15 21:43:28 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SPRINTF_H
-# define FT_SPRINTF_H
+#include "libft.h"
+#include <stdarg.h>
 
-# include <stddef.h>
+char	*ft_strjoin_mult(size_t count, ...)
+{
+	char	*join;
+	char	*tmp;
+	va_list	args;
 
-int	ft_sprintf(char *buffer, size_t size, const char *format, ...);
-
-#endif
+	va_start(args, count);
+	join = ft_strdup("");
+	while (count--)
+	{
+		tmp = join;
+		join = ft_strjoin(join, va_arg(args, char *));
+		free(tmp);
+	}
+	va_end(args);
+	return (join);
+}

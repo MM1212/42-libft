@@ -64,7 +64,14 @@
 		"limits": "c",
 		"semaphore": "c",
 		"algorithm": "c",
-		"ft_printf_internal.h": "c"
+		"ft_printf_internal.h": "c",
+		"stdio.h": "c",
+		"ft_vfprintf_internal.h": "c",
+		"ft_printf_int.h": "c",
+		"ft_vsprintf_internal.h": "c",
+		"ft_printf_int_flags.h": "c",
+		"ft_printf.h": "c",
+		"get_next_line.h": "c"
 	},
 	"files.exclude": {
 		"**/*.o": true,

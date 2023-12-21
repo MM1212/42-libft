@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sprintf_putfloat.c                              :+:      :+:    :+:   */
+/*   ft_vsprintf_putfloat.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 00:07:03 by martiper          #+#    #+#             */
-/*   Updated: 2023/06/12 03:29:52 by martiper         ###   ########.fr       */
+/*   Updated: 2023/11/15 22:16:48 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_sprintf_internal.h"
+#include "ft_vsprintf_internal.h"
 
 /*
 	Output a float number with the given precision.
  */
-size_t	ft_def_sprintf_putfloat(t_ft_sprintf_buffer *buffer, double n,
-			t_ft_sprintf_flags flags)
+size_t	ft_def_sprintf_putfloat(\
+	t_ft_sprintf_buffer *buffer, \
+	double n, \
+	t_ft_printf_flags flags \
+)
 {
 	size_t		count;
 	double		dec;

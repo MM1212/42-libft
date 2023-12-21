@@ -1,44 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sprintf.c                                       :+:      :+:    :+:   */
+/*   ft_vsprintf.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 12:47:24 by mm                #+#    #+#             */
-/*   Updated: 2023/05/17 09:19:39 by martiper         ###   ########.fr       */
+/*   Updated: 2023/11/15 22:11:27 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_sprintf_internal.h"
-
-static t_ft_sprintf_flags	ft_handle_bonus(const char *format, size_t *idx)
-{
-	t_ft_sprintf_flags	flags;
-
-	flags.hex_prefix = false;
-	flags.positive = false;
-	flags.space = false;
-	flags.precision = 6;
-	if (format[*idx + 1] == '#')
-	{
-		flags.hex_prefix = (format[*idx + 2] == 'x' || format[*idx + 2] == 'X');
-		(*idx)++;
-	}
-	else if (format[*idx + 1] == ' ')
-	{
-		flags.space = true;
-		(*idx)++;
-	}
-	else if (format[*idx + 1] == '.')
-	{
-		(*idx)++;
-		flags.precision = ft_atoi(&format[*idx + 1]);
-		while (ft_isdigit(format[*idx + 1]))
-			(*idx)++;
-	}
-	return (flags);
-}
+#include "ft_vsprintf_internal.h"
+#include "printf/ft_printf.h"
 
 static size_t	ft_format(\
 	t_ft_sprintf_buffer *buffer, \
@@ -47,10 +20,10 @@ static size_t	ft_format(\
 	size_t *idx \
 )
 {
-	t_ft_sprintf_flags	flags;
+	t_ft_printf_flags	flags;
 	char				mod;
 
-	flags = ft_handle_bonus(format, idx);
+	flags = ft_def_printf_flags(format, idx);
 	mod = format[++(*idx)];
 	if (mod == 'c')
 		return (ft_def_sprintf_putchar(buffer, va_arg(args, int)));
@@ -74,9 +47,8 @@ static size_t	ft_format(\
 	return (0);
 }
 
-int	ft_sprintf(char *str, size_t size, const char *format, ...)
+int	ft_vsprintf(char *str, size_t size, const char *format, va_list args)
 {
-	va_list				list;
 	size_t				idx;
 	size_t				count;
 	t_ft_sprintf_buffer	buffer;
@@ -85,7 +57,6 @@ int	ft_sprintf(char *str, size_t size, const char *format, ...)
 	count = 0;
 	if (!str || !format)
 		return (-1);
-	va_start(list, format);
 	buffer = (t_ft_sprintf_buffer){.size = size, .buffer = str};
 	while (format[idx] && count < size - 1)
 	{
@@ -94,11 +65,10 @@ int	ft_sprintf(char *str, size_t size, const char *format, ...)
 			count += ft_def_sprintf_putchar(&buffer, format[idx++]);
 			continue ;
 		}
-		count += ft_format(&buffer, format, list, &idx);
+		count += ft_format(&buffer, format, args, &idx);
 		idx++;
 	}
 	if (count < size)
 		str[count] = '\0';
-	va_end(list);
 	return (count);
 }

@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sprintf_putchar.c                               :+:      :+:    :+:   */
+/*   ft_printf_int_flags.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 11:12:26 by mm                #+#    #+#             */
-/*   Updated: 2023/05/07 01:25:41 by martiper         ###   ########.fr       */
+/*   Created: 2023/11/15 21:48:09 by martiper          #+#    #+#             */
+/*   Updated: 2023/11/15 22:47:49 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_sprintf_internal.h"
+#ifndef FT_PRINTF_INT_FLAGS_H
+# define FT_PRINTF_INT_FLAGS_H
 
-size_t	ft_def_sprintf_putchar(t_ft_sprintf_buffer *buffer, const char c)
+# include <stddef.h>
+# include <stdbool.h>
+# include <libft.h>
+
+typedef struct s_ft_printf_flags
 {
-	if (buffer->size <= 0)
-		return (0);
-	*buffer->buffer++ = c;
-	buffer->size--;
-	return (1);
-}
+	bool	space;
+	bool	positive;
+	bool	hex_prefix;
+	int		precision;
+}			t_ft_printf_flags;
+
+t_ft_printf_flags	ft_def_printf_flags(const char *format, size_t *idx);
+
+#endif
