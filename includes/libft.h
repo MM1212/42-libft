@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 19:33:43 by mm                #+#    #+#             */
-/*   Updated: 2023/12/21 18:53:58 by martiper         ###   ########.fr       */
+/*   Updated: 2024/01/10 12:09:10 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,5 @@ t_list	*ft_lstgoto(t_list **lst, int index);
 void	ft_lstfclear(t_list **lst, void (*del)(void *));
 void	ft_lstadd_after(t_list **list, t_list *ref, t_list *node);
 void	ft_lstadd_before(t_list **list, t_list *ref, t_list *node);
-
 
 #endif

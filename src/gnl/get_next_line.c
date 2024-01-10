@@ -6,14 +6,12 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 21:21:29 by mm                #+#    #+#             */
-/*   Updated: 2023/05/28 19:49:43 by martiper         ###   ########.fr       */
+/*   Updated: 2024/01/10 12:06:57 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "gnl_int.h"
 #include "libft.h"
-
-typedef t_get_next_line_data	t_data;
 
 /*
 	- get new line everytime we call it.
