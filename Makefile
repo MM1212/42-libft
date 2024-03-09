@@ -6,7 +6,7 @@
 #    By: martiper <martiper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 15:25:36 by martiper          #+#    #+#              #
-#    Updated: 2023/12/21 18:53:50 by martiper         ###   ########.fr        #
+#    Updated: 2024/03/09 11:27:50 by martiper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,8 +40,8 @@ SRCS =	ft_atoi.c \
 		ft_strlen.c \
 		ft_strrchr.c \
 		ft_substr.c \
-		ft_strjoin.c \
 		ft_strjoin_mult.c \
+		ft_strjoin_sep.c \
 		ft_strtrim.c \
 		ft_itoa.c \
 		ft_ltoa.c \

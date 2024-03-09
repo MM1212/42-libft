@@ -1,40 +1,61 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin_mult.c                                  :+:      :+:    :+:   */
+/*   ft_strjoin_sep.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 21:41:36 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/09 11:34:04 by martiper         ###   ########.fr       */
+/*   Created: 2024/03/09 11:22:10 by martiper          #+#    #+#             */
+/*   Updated: 2024/03/09 11:33:20 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdarg.h>
 
-char	*ft_strjoin(size_t count, ...)
+static void	count_args(char *sep, va_list args, size_t *len, size_t *count)
+{
+	char	*arg;
+
+	*len = 0;
+	*count = 0;
+	while (1)
+	{
+		arg = va_arg(args, char *);
+		if (!arg)
+			break ;
+		*len += ft_strlen(arg);
+		(*count)++;
+	}
+	*len += ft_strlen(sep) * (*count - 1);
+}
+
+char	*ft_strjoin_sep(char *sep, ...)
 {
 	char	*join;
+	char	*arg;
 	va_list	args;
 	size_t	len;
+	size_t	count;
 
-	va_start(args, count);
-	len = 0;
-	while (count--)
-		len += ft_strlen(va_arg(args, char *));
+	va_start(args, sep);
+	count_args(sep, args, &len, &count);
 	va_end(args);
-	va_start(args, count);
+	va_start(args, sep);
 	join = ft_calloc(len + 1, sizeof(char));
 	if (!join)
 		return (NULL);
 	while (count--)
-		ft_strlcat(join, va_arg(args, char *), len + 1);
+	{
+		arg = va_arg(args, char *);
+		ft_strlcat(join, arg, len + 1);
+		if (count)
+			ft_strlcat(join, sep, len + 1);
+	}
 	va_end(args);
 	return (join);
 }
 
-char	*ft_strjoin2(char **strs)
+char	*ft_strjoin_sep2(char *sep, char **strs)
 {
 	char	*join;
 	size_t	i;
@@ -44,11 +65,17 @@ char	*ft_strjoin2(char **strs)
 	len = 0;
 	while (strs[i])
 		len += ft_strlen(strs[i++]);
+	len += ft_strlen(sep) * (i - 1);
 	join = ft_calloc(len + 1, sizeof(char));
 	if (!join)
 		return (NULL);
 	i = 0;
 	while (strs[i])
-		ft_strlcat(join, strs[i++], len + 1);
+	{
+		ft_strlcat(join, strs[i], len + 1);
+		if (strs[i + 1])
+			ft_strlcat(join, sep, len + 1);
+		i++;
+	}
 	return (join);
 }
