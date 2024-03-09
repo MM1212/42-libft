@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 21:41:36 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/09 11:34:04 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/09 12:37:42 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,20 @@ char	*ft_strjoin(size_t count, ...)
 	char	*join;
 	va_list	args;
 	size_t	len;
+	size_t	i;
 
 	va_start(args, count);
 	len = 0;
-	while (count--)
+	i = count;
+	while (i--)
 		len += ft_strlen(va_arg(args, char *));
 	va_end(args);
 	va_start(args, count);
 	join = ft_calloc(len + 1, sizeof(char));
 	if (!join)
 		return (NULL);
-	while (count--)
+	i = count;
+	while (i--)
 		ft_strlcat(join, va_arg(args, char *), len + 1);
 	va_end(args);
 	return (join);
