@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 12:47:24 by mm                #+#    #+#             */
-/*   Updated: 2024/03/21 17:15:51 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/21 17:22:17 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int	ft_vfprintf(int fd, const char *format, va_list args)
 		}
 		count += ft_def_vfprintf_format(fd, format[++idx], args, \
 			ft_def_printf_flags(format, &idx));
+		idx++;
 	}
 	return (count);
 }
