@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 12:45:12 by mm                #+#    #+#             */
-/*   Updated: 2023/11/15 22:08:16 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/21 16:21:05 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ size_t	ft_def_sprintf_putfloat(\
 	double n, \
 	t_ft_printf_flags flags \
 );
+size_t	ft_def_sprintf_putbool(t_ft_sprintf_buffer *buffer, bool n);
 
 #endif

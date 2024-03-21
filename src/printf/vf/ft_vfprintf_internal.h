@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 12:45:12 by mm                #+#    #+#             */
-/*   Updated: 2023/11/15 22:09:28 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/21 16:16:12 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ size_t				ft_def_vfprintf_puthexadecimal(\
 size_t				ft_def_vfprintf_putfloat(\
 	int fd, \
 	double n, \
+	t_ft_printf_flags flags \
+);
+size_t				ft_def_vfprintf_putbool(\
+	int fd, \
+	bool n, \
 	t_ft_printf_flags flags \
 );
 size_t				ft_def_vfprintf_format(\

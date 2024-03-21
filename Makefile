@@ -6,7 +6,7 @@
 #    By: martiper <martiper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 15:25:36 by martiper          #+#    #+#              #
-#    Updated: 2024/03/09 11:44:34 by martiper         ###   ########.fr        #
+#    Updated: 2024/03/21 16:19:44 by martiper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,12 +20,14 @@ PRINTF_SRCS =	printf/ft_internal.c \
 				printf/vf/ft_vfprintf_putnbrs.c \
 				printf/vf/ft_vfprintf_putstr.c \
 				printf/vf/ft_vfprintf_putfloat.c \
+				printf/vf/ft_vfprintf_putbool.c \
 				printf/vf/ft_vfprintf.c \
 				printf/vs/ft_vsprintf_putaddress.c \
 				printf/vs/ft_vsprintf_putchar.c \
 				printf/vs/ft_vsprintf_putnbrs.c \
 				printf/vs/ft_vsprintf_putstr.c \
 				printf/vs/ft_vsprintf_putfloat.c \
+				printf/vs/ft_vsprintf_putbool.c \
 				printf/vs/ft_vsprintf.c \
 				printf/ft_fprintf.c \
 				printf/ft_printf.c \
