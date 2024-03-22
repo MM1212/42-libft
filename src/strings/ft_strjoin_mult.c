@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 21:41:36 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/09 12:37:42 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/22 15:17:30 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ char	*ft_strjoin2(char **strs)
 
 	i = 0;
 	len = 0;
+	if (!strs)
+		return (NULL);
 	while (strs[i])
 		len += ft_strlen(strs[i++]);
 	join = ft_calloc(len + 1, sizeof(char));

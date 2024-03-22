@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 11:22:10 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/09 11:33:20 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/22 15:17:18 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ char	*ft_strjoin_sep(char *sep, ...)
 	size_t	len;
 	size_t	count;
 
+	if (!sep)
+		return (NULL);
 	va_start(args, sep);
 	count_args(sep, args, &len, &count);
 	va_end(args);
@@ -63,6 +65,8 @@ char	*ft_strjoin_sep2(char *sep, char **strs)
 
 	i = 0;
 	len = 0;
+	if (!strs)
+		return (NULL);
 	while (strs[i])
 		len += ft_strlen(strs[i++]);
 	len += ft_strlen(sep) * (i - 1);
