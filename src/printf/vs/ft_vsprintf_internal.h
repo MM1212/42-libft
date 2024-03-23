@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 12:45:12 by mm                #+#    #+#             */
-/*   Updated: 2024/03/21 16:21:05 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/23 14:19:20 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,15 @@ typedef struct s_ft_sprintf_buffer
 	char	*buffer;
 	size_t	size;
 }			t_ft_sprintf_buffer;
+
+typedef struct s_ft_sprintf_format_args
+{
+	t_ft_sprintf_buffer	*buffer;
+	const char			*format;
+	char				mod;
+	t_ft_printf_flags	flags;
+	size_t				*idx;
+}	t_ft_sprintf_format_args;
 
 size_t	ft_def_sprintf_putchar(t_ft_sprintf_buffer *buffer, const char c);
 size_t	ft_def_sprintf_putstr(t_ft_sprintf_buffer *buffer, const char *str);

@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 00:07:03 by martiper          #+#    #+#             */
-/*   Updated: 2023/11/15 21:58:32 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/23 14:29:15 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 	Output a float number with the given precision.
  */
-size_t	ft_def_vfprintf_putfloat(int fd, double n, t_ft_printf_flags flags)
+size_t	vfpf_putfloat(int fd, double n, t_ft_printf_flags flags)
 {
 	size_t		len;
 	double		dec;
@@ -23,11 +23,11 @@ size_t	ft_def_vfprintf_putfloat(int fd, double n, t_ft_printf_flags flags)
 
 	len = 0;
 	if (n < 0 && (long)n == 0)
-		len += ft_def_vfprintf_putchar(fd, '-', flags);
-	len += ft_def_vfprintf_putnbr(fd, (long)n, flags);
+		len += vfpf_putchar(fd, '-', flags);
+	len += vfpf_putnbr(fd, (long)n, flags);
 	if (flags.precision > 0)
 	{
-		ft_def_vfprintf_putchar(fd, '.', flags);
+		vfpf_putchar(fd, '.', flags);
 		len++;
 		dec = ft_absf(n - ft_abs((long)n));
 		i = 0;
@@ -36,7 +36,7 @@ size_t	ft_def_vfprintf_putfloat(int fd, double n, t_ft_printf_flags flags)
 		while (i-- > 0)
 		{
 			dec *= 10;
-			len += ft_def_vfprintf_putnbr(fd, (long)dec, flags);
+			len += vfpf_putnbr(fd, (long)dec, flags);
 			dec -= (long)dec;
 		}
 	}

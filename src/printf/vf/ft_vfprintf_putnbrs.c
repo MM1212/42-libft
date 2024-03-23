@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:15:07 by mm                #+#    #+#             */
-/*   Updated: 2023/11/15 21:58:06 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/23 14:29:10 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #define HEXA_CHARS_UPPER "0123456789ABCDEF"
 #define LONG_MAX_2 147483647
 
-size_t	ft_def_vfprintf_putnbr(int fd, long long n, t_ft_printf_flags flags)
+size_t	vfpf_putnbr(int fd, long long n, t_ft_printf_flags flags)
 {
 	char	*ptr;
 	size_t	count;
@@ -28,10 +28,10 @@ size_t	ft_def_vfprintf_putnbr(int fd, long long n, t_ft_printf_flags flags)
 		return (0);
 	count = 0;
 	if (flags.space)
-		count += ft_def_vfprintf_putchar(fd, ' ', flags);
+		count += vfpf_putchar(fd, ' ', flags);
 	else if (n > 0 && flags.positive)
-		count += ft_def_vfprintf_putchar(fd, '+', flags);
-	count += ft_def_vfprintf_putstr(fd, ptr, flags);
+		count += vfpf_putchar(fd, '+', flags);
+	count += vfpf_putstr(fd, ptr, flags);
 	free(ptr);
 	return (count);
 }
@@ -46,12 +46,12 @@ static size_t	putnbr_unsigned(\
 
 	count = 0;
 	if (n > 9)
-		count += ft_def_vfprintf_putnbr_unsigned(fd, n / 10, flags);
-	count += ft_def_vfprintf_putchar(fd, NUMERIC_CHARS[n % 10], flags);
+		count += vfpf_unsigned(fd, n / 10, flags);
+	count += vfpf_putchar(fd, NUMERIC_CHARS[n % 10], flags);
 	return (count);
 }
 
-size_t	ft_def_vfprintf_putnbr_unsigned(\
+size_t	vfpf_unsigned(\
 	int fd, \
 	unsigned long long n, \
 	t_ft_printf_flags flags \
@@ -61,9 +61,9 @@ size_t	ft_def_vfprintf_putnbr_unsigned(\
 
 	count = 0;
 	if (flags.space)
-		count += ft_def_vfprintf_putchar(fd, ' ', flags);
+		count += vfpf_putchar(fd, ' ', flags);
 	else if (flags.positive)
-		count += ft_def_vfprintf_putchar(fd, '+', flags);
+		count += vfpf_putchar(fd, '+', flags);
 	return (putnbr_unsigned(fd, n, flags) + count);
 }
 
@@ -85,7 +85,7 @@ static size_t	puthexadecimal(\
 	return (count);
 }
 
-size_t	ft_def_vfprintf_puthexadecimal(\
+size_t	vfpf_puthexadecimal(\
 	int fd, \
 	unsigned long long n, \
 	int upper, \
@@ -98,9 +98,9 @@ size_t	ft_def_vfprintf_puthexadecimal(\
 	if (flags.hex_prefix)
 	{
 		if (upper)
-			count += ft_def_vfprintf_putstr(fd, "0X", flags);
+			count += vfpf_putstr(fd, "0X", flags);
 		else
-			count += ft_def_vfprintf_putstr(fd, "0x", flags);
+			count += vfpf_putstr(fd, "0x", flags);
 	}
 	return (puthexadecimal(fd, n, upper) + count);
 }

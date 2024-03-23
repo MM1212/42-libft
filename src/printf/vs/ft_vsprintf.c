@@ -6,46 +6,58 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 12:47:24 by mm                #+#    #+#             */
-/*   Updated: 2024/03/21 16:21:13 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/23 14:22:42 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vsprintf_internal.h"
 #include "printf/ft_printf.h"
 
-static size_t	ft_format(\
+static size_t	ft_create_format_args(
 	t_ft_sprintf_buffer *buffer, \
 	const char *format, \
 	va_list args, \
 	size_t *idx \
 )
 {
-	t_ft_printf_flags	flags;
-	char				mod;
+	t_ft_sprintf_format_args	data;
 
-	flags = ft_def_printf_flags(format, idx);
-	mod = format[++(*idx)];
-	if (mod == 'c')
-		return (ft_def_sprintf_putchar(buffer, va_arg(args, int)));
-	else if (mod == 's')
-		return (ft_def_sprintf_putstr(buffer, va_arg(args, char *)));
-	else if (mod == 'd' || mod == 'i')
-		return (ft_def_sprintf_putnbr(buffer, va_arg(args, int), flags));
-	else if (mod == 'u')
-		return (ft_def_sprintf_putnbr_unsigned(buffer,
-				va_arg(args, unsigned int), flags));
-	else if (mod == 'x' || mod == 'X')
-		return (ft_def_sprintf_puthexadecimal(buffer,
-				va_arg(args, unsigned int), mod == 'X', flags));
-	else if (mod == 'p')
-		return (ft_def_sprintf_putaddress(buffer,
-				va_arg(args, void *), flags));
-	else if (mod == 'f')
-		return (ft_def_sprintf_putfloat(buffer, va_arg(args, double), flags));
-	else if (mod == 'b')
-		return (ft_def_sprintf_putbool(buffer, va_arg(args, int)));
-	else if (mod == '%')
-		return (ft_def_sprintf_putchar(buffer, '%'));
+	data.buffer = buffer;
+	data.format = format;
+	data.idx = idx;
+	data.flags = ft_def_printf_flags(format, idx);
+	data.mod = format[(*idx)++];
+	return (ft_format(&data, args));
+}
+
+static size_t	ft_format(\
+	t_ft_sprintf_format_args *data, \
+	va_list args \
+)
+{
+	if (data->mod == 'c')
+		return (ft_def_sprintf_putchar(data->buffer, va_arg(args, int)));
+	else if (data->mod == 's')
+		return (ft_def_sprintf_putstr(data->buffer, va_arg(args, char *)));
+	else if (data->mod == 'd' || data->mod == 'i')
+		return (ft_def_sprintf_putnbr(data->buffer,
+				va_arg(args, int), data->flags));
+	else if (data->mod == 'u')
+		return (ft_def_sprintf_putnbr_unsigned(data->buffer,
+				va_arg(args, unsigned int), data->flags));
+	else if (data->mod == 'x' || data->mod == 'X')
+		return (ft_def_sprintf_puthexadecimal(data->buffer,
+				va_arg(args, unsigned int), data->mod == 'X', data->flags));
+	else if (data->mod == 'p')
+		return (ft_def_sprintf_putaddress(data->buffer,
+				va_arg(args, void *), data->flags));
+	else if (data->mod == 'f')
+		return (ft_def_sprintf_putfloat(data->buffer,
+				va_arg(args, double), data->flags));
+	else if (data->mod == 'b')
+		return (ft_def_sprintf_putbool(data->buffer, va_arg(args, int)));
+	else if (data->mod == '%')
+		return (ft_def_sprintf_putchar(data->buffer, '%'));
 	return (0);
 }
 
@@ -67,8 +79,8 @@ int	ft_vsprintf(char *str, size_t size, const char *format, va_list args)
 			count += ft_def_sprintf_putchar(&buffer, format[idx++]);
 			continue ;
 		}
-		count += ft_format(&buffer, format, args, &idx);
 		idx++;
+		count += ft_create_format_args(&buffer, format, args, &idx);
 	}
 	if (count < size)
 		str[count] = '\0';
