@@ -6,12 +6,14 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 12:47:24 by mm                #+#    #+#             */
-/*   Updated: 2024/03/23 14:33:43 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/23 19:42:46 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vsprintf_internal.h"
 #include "printf/ft_printf.h"
+
+#include <stdio.h>
 
 static size_t	ft_format(\
 	t_ft_sprintf_format_args *data, \
@@ -26,13 +28,16 @@ static size_t	ft_create_format_args(
 )
 {
 	t_ft_sprintf_format_args	data;
+	size_t						count;
 
 	data.buffer = buffer;
 	data.format = format;
 	data.idx = idx;
-	data.flags = ft_def_printf_flags(format, idx);
+	data.flags = ft_def_printf_flags(format, idx, args);
 	data.mod = format[(*idx)++];
-	return (ft_format(&data, args));
+	count = (ft_format(&data, args));
+	count += spf_output_padding(buffer, count, data.flags, false);
+	return (count);
 }
 
 static size_t	ft_format(\
@@ -41,28 +46,44 @@ static size_t	ft_format(\
 )
 {
 	if (data->mod == 'c')
-		return (ft_def_sprintf_putchar(data->buffer, va_arg(args, int)));
+		return (spf_putchar(data->buffer, va_arg(args, int), data->flags));
 	else if (data->mod == 's')
-		return (ft_def_sprintf_putstr(data->buffer, va_arg(args, char *)));
+		return (spf_putstr(data->buffer, va_arg(args, char *), data->flags));
 	else if (data->mod == 'd' || data->mod == 'i')
-		return (ft_def_sprintf_putnbr(data->buffer,
+		return (spf_putnbr(data->buffer,
 				va_arg(args, int), data->flags));
 	else if (data->mod == 'u')
-		return (ft_def_sprintf_putnbr_unsigned(data->buffer,
+		return (spf_putnbr_unsigned(data->buffer,
 				va_arg(args, unsigned int), data->flags));
 	else if (data->mod == 'x' || data->mod == 'X')
-		return (ft_def_sprintf_puthexadecimal(data->buffer,
+		return (spf_puthexadecimal(data->buffer,
 				va_arg(args, unsigned int), data->mod == 'X', data->flags));
 	else if (data->mod == 'p')
-		return (ft_def_sprintf_putaddress(data->buffer,
+		return (spf_putaddress(data->buffer,
 				va_arg(args, void *), data->flags));
 	else if (data->mod == 'f')
-		return (ft_def_sprintf_putfloat(data->buffer,
+		return (spf_putfloat(data->buffer,
 				va_arg(args, double), data->flags));
 	else if (data->mod == 'b')
-		return (ft_def_sprintf_putbool(data->buffer, va_arg(args, int)));
+		return (spf_putbool(data->buffer, va_arg(args, int), data->flags));
 	else if (data->mod == '%')
-		return (ft_def_sprintf_putchar(data->buffer, '%'));
+		return (spf_putchar(data->buffer, '%', data->flags));
+	return (0);
+}
+
+static size_t	output_char(\
+	t_ft_sprintf_buffer *buffer, \
+	const char c, \
+	size_t	*idx
+)
+{
+	if (buffer->size > 0)
+	{
+		*buffer->buffer++ = c;
+		buffer->size--;
+		(*idx)++;
+		return (1);
+	}
 	return (0);
 }
 
@@ -81,7 +102,8 @@ int	ft_vsprintf(char *str, size_t size, const char *format, va_list args)
 	{
 		if (format[idx] != '%')
 		{
-			count += ft_def_sprintf_putchar(&buffer, format[idx++]);
+			if (buffer.size > 0)
+				count += output_char(&buffer, format[idx], &idx);
 			continue ;
 		}
 		idx++;

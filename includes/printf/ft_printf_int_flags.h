@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 21:48:09 by martiper          #+#    #+#             */
-/*   Updated: 2023/11/15 22:47:49 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/23 19:37:50 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,30 @@
 # include <stdbool.h>
 # include <libft.h>
 
+typedef enum e_ft_printf_justify
+{
+	FT_PRINTF_JUSTIFY_LEFT,
+	FT_PRINTF_JUSTIFY_RIGHT
+}			t_ft_printf_justify;
+
 typedef struct s_ft_printf_flags
 {
+	bool	disabled;
 	bool	space;
 	bool	positive;
 	bool	hex_prefix;
 	int		precision;
+	size_t	padding;
+	char	pad_char;
+	int		justify;
 }			t_ft_printf_flags;
 
-t_ft_printf_flags	ft_def_printf_flags(const char *format, size_t *idx);
+t_ft_printf_flags	ft_def_printf_flags(\
+	const char *format, \
+	size_t *idx, \
+	va_list args \
+);
+size_t				ft_def_printf_count_digits(long long n, bool signed_value);
+size_t				ft_def_printf_count_float_digits(double n);
 
 #endif

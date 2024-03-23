@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 12:47:24 by mm                #+#    #+#             */
-/*   Updated: 2024/03/23 14:33:22 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/23 19:39:52 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,16 @@ static size_t	ft_create_format_args(
 )
 {
 	t_ft_printf_format_args	data;
+	size_t					count;
 
 	data.fd = fd;
 	data.format = format;
 	data.idx = idx;
-	data.flags = ft_def_printf_flags(format, idx);
+	data.flags = ft_def_printf_flags(format, idx, args);
 	data.mod = format[(*idx)++];
-	return (ft_format(&data, args));
+	count = (ft_format(&data, args));
+	count += vfpf_output_padding(fd, count, data.flags, false);
+	return (count);
 }
 
 static size_t	ft_format(\

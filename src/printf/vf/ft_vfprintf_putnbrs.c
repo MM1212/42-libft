@@ -6,12 +6,13 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:15:07 by mm                #+#    #+#             */
-/*   Updated: 2024/03/23 14:29:10 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/23 19:35:46 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vfprintf_internal.h"
 #include <limits.h>
+#include <stdbool.h>
 
 #define NUMERIC_CHARS "0123456789"
 #define HEXA_CHARS_LOWER "0123456789abcdef"
@@ -22,11 +23,19 @@ size_t	vfpf_putnbr(int fd, long long n, t_ft_printf_flags flags)
 {
 	char	*ptr;
 	size_t	count;
+	size_t	len;
 
 	ptr = ft_itoa(n);
 	if (!ptr)
 		return (0);
 	count = 0;
+	len = ft_strlen(ptr);
+	if (flags.space)
+		len++;
+	if (flags.positive && n > 0)
+		len++;
+	count += vfpf_output_padding(fd, len, flags, true);
+	flags.disabled = true;
 	if (flags.space)
 		count += vfpf_putchar(fd, ' ', flags);
 	else if (n > 0 && flags.positive)
@@ -57,9 +66,16 @@ size_t	vfpf_unsigned(\
 	t_ft_printf_flags flags \
 )
 {
-	int	count;
+	size_t	count;
+	size_t	len;
 
 	count = 0;
+	len = ft_def_printf_count_digits(n, false);
+	if (flags.space)
+		len++;
+	if (flags.positive)
+		len++;
+	count += vfpf_output_padding(fd, len, flags, true);
 	if (flags.space)
 		count += vfpf_putchar(fd, ' ', flags);
 	else if (flags.positive)
@@ -93,8 +109,14 @@ size_t	vfpf_puthexadecimal(\
 )
 {
 	size_t	count;
+	size_t	len;
 
 	count = 0;
+	len = ft_def_printf_count_digits(n, false);
+	if (flags.hex_prefix)
+		len += 2;
+	count += vfpf_output_padding(fd, len, flags, true);
+	flags.disabled = true;
 	if (flags.hex_prefix)
 	{
 		if (upper)

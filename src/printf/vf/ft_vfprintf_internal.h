@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 12:45:12 by mm                #+#    #+#             */
-/*   Updated: 2024/03/23 14:29:19 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/23 19:40:05 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,13 @@ size_t				vfpf_putbool(\
 	int fd, \
 	bool n, \
 	t_ft_printf_flags flags \
+);
+
+size_t				vfpf_output_padding(\
+	int fd, \
+	size_t to_print_count, \
+	t_ft_printf_flags flags, \
+	bool before_print \
 );
 
 #endif

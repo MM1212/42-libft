@@ -6,11 +6,28 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 00:07:03 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/23 14:29:15 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/23 19:39:28 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vfprintf_internal.h"
+
+static void	manage_padding(\
+	int fd, \
+	double n, \
+	t_ft_printf_flags flags, \
+	size_t *len \
+)
+{
+	*len = 0;
+	if (flags.precision == -1)
+		flags.precision = 6;
+	*len += ft_def_printf_count_float_digits(n);
+	if (n < 0 && (long)n == 0)
+		(*len)++;
+	*len = vfpf_output_padding(fd, *len, flags, true);
+	flags.disabled = true;
+}
 
 /*
 	Output a float number with the given precision.
@@ -21,7 +38,7 @@ size_t	vfpf_putfloat(int fd, double n, t_ft_printf_flags flags)
 	double		dec;
 	int			i;
 
-	len = 0;
+	manage_padding(fd, n, flags, &len);
 	if (n < 0 && (long)n == 0)
 		len += vfpf_putchar(fd, '-', flags);
 	len += vfpf_putnbr(fd, (long)n, flags);
