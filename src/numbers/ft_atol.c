@@ -6,23 +6,11 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 22:55:00 by mm                #+#    #+#             */
-/*   Updated: 2023/05/31 19:07:07 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/23 22:00:38 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static int	ft_is_whitespace(char c)
-{
-	return (
-		c == ' '
-		|| c == '\f'
-		|| c == '\n'
-		|| c == '\r'
-		|| c == '\t'
-		|| c == '\v'
-	);
-}
 
 long	ft_atol(const char *str)
 {
@@ -33,7 +21,7 @@ long	ft_atol(const char *str)
 	i = 0;
 	if (!str)
 		return (0);
-	while (ft_is_whitespace(str[i]))
+	while (ft_isspace(str[i]))
 		i++;
 	signal = 1;
 	if (str[i] == '-' || str[i] == '+')
@@ -57,7 +45,7 @@ long long	ft_atoll(const char *str)
 	i = 0;
 	if (!str)
 		return (0);
-	while (ft_is_whitespace(str[i]))
+	while (ft_isspace(str[i]))
 		i++;
 	signal = 1;
 	if (str[i] == '-' || str[i] == '+')

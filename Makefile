@@ -6,7 +6,7 @@
 #    By: martiper <martiper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 15:25:36 by martiper          #+#    #+#              #
-#    Updated: 2024/03/23 19:24:50 by martiper         ###   ########.fr        #
+#    Updated: 2024/03/23 22:00:58 by martiper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,6 +74,7 @@ NBRS_SRCS =		numbers/ft_abs.c \
 
 STRINGS_SRCS =	strings/ft_countchar.c \
 				strings/ft_isdigit.c \
+				strings/ft_isspace.c \
 				strings/ft_split.c \
 				strings/ft_strcpy.c \
 				strings/ft_strjoin_sep.c \
