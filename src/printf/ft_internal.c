@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 21:50:19 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/23 19:45:26 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/23 22:19:03 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ t_ft_printf_flags	ft_def_printf_flags(\
 	t_ft_printf_flags	flags;
 
 	ft_bzero(&flags, sizeof(flags));
-	flags.precision = 6;
+	flags.precision = -1;
 	flags.pad_char = ' ';
 	flags.justify = FT_PRINTF_JUSTIFY_RIGHT;
 	parse_flags(format, idx, &flags);
