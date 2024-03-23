@@ -6,7 +6,7 @@
 #    By: martiper <martiper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 15:25:36 by martiper          #+#    #+#              #
-#    Updated: 2023/11/15 22:48:02 by martiper         ###   ########.fr        #
+#    Updated: 2024/03/23 12:57:12 by martiper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,7 +94,7 @@ SRCS =	ft_atoi.c \
 OBJ_DIR = objs
 
 SRC_FILES = $(addprefix $(SRCS_DIR)/, $(SRCS))
-OBJS = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
+OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -Iincludes -g
@@ -120,10 +120,10 @@ all: $(NAME)
 
 $(NAME) : $(OBJS)
 	@mkdir -p $(dir $@)
-	@ar -rcs $(NAME) $(OBJS)
+	ar -rcsP $(NAME) $^
 	@echo "$(TAG) compiled version $(YELLOW)$$(cat VERSION)$(RESET)!"
 
-$(OBJ_DIR)/%.o: %.c
+$(OBJ_DIR)/%.o: $(SRCS_DIR)/%.c
 	@echo "$(TAG) building $(YELLOW)$<$(RESET).."
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
