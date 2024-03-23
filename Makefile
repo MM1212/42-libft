@@ -6,7 +6,7 @@
 #    By: martiper <martiper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 15:25:36 by martiper          #+#    #+#              #
-#    Updated: 2024/03/23 12:57:12 by martiper         ###   ########.fr        #
+#    Updated: 2024/03/23 13:01:56 by martiper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -120,7 +120,7 @@ all: $(NAME)
 
 $(NAME) : $(OBJS)
 	@mkdir -p $(dir $@)
-	ar -rcsP $(NAME) $^
+	@ar -rcsP $(NAME) $^
 	@echo "$(TAG) compiled version $(YELLOW)$$(cat VERSION)$(RESET)!"
 
 $(OBJ_DIR)/%.o: $(SRCS_DIR)/%.c
