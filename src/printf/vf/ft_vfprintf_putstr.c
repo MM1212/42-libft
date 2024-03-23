@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:10:44 by mm                #+#    #+#             */
-/*   Updated: 2024/03/23 18:48:58 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/23 22:04:45 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,14 @@
 size_t	vfpf_putstr(int fd, const char *str, t_ft_printf_flags flags)
 {
 	size_t	count;
+	size_t	len;
 
 	if (!str)
 		return (vfpf_putstr(fd, "(null)", flags));
-	vfpf_output_padding(fd, ft_strlen(str), flags, true);
-	count = write(fd, str, ft_strlen(str));
+	count = vfpf_output_padding(fd, ft_strlen(str), flags, true);
+	len = ft_strlen(str);
+	if (flags.precision >= 0 && (size_t)flags.precision < len)
+		len = flags.precision;
+	count += write(fd, str, len);
 	return (count);
 }

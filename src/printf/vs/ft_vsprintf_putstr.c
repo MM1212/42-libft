@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:10:44 by mm                #+#    #+#             */
-/*   Updated: 2024/03/23 19:34:25 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/23 22:05:55 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,20 @@ size_t	spf_putstr(\
 )
 {
 	size_t	count;
+	size_t	len;
 
 	if (!str)
 		return (spf_putstr(buffer, "(null)", flags));
 	count = spf_output_padding(buffer, ft_strlen(str), flags, true);
-	count += ft_strlen(str);
-	if (count > buffer->size)
-		count = buffer->size;
+	len = ft_strlen(str);
+	if (flags.precision >= 0 && (size_t)flags.precision < len)
+		len = flags.precision;
 	if (buffer->size > 0)
 	{
-		ft_memmove(buffer->buffer, str, count);
-		buffer->buffer += count;
-		buffer->size -= count;
+		ft_memmove(buffer->buffer, str, len);
+		buffer->buffer += len;
+		buffer->size -= len;
+		count += len;
 	}
 	return (count);
 }
