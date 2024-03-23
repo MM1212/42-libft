@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:10:44 by mm                #+#    #+#             */
-/*   Updated: 2024/03/23 14:29:19 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/23 14:33:56 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ size_t	vfpf_putbool(int fd, bool value, t_ft_printf_flags flags)
 	size_t	count;
 
 	if (value)
-		count = ft_def_vfprintf_putstr(fd, "true", flags);
+		count = vfpf_putstr(fd, "true", flags);
 	else
-		count = ft_def_vfprintf_putstr(fd, "false", flags);
+		count = vfpf_putstr(fd, "false", flags);
 	return (count);
 }

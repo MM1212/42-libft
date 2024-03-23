@@ -6,12 +6,17 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 12:47:24 by mm                #+#    #+#             */
-/*   Updated: 2024/03/23 14:29:19 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/23 14:33:22 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vfprintf_internal.h"
 #include "printf/ft_printf.h"
+
+static size_t	ft_format(\
+	t_ft_printf_format_args *data, \
+	va_list args \
+);
 
 static size_t	ft_create_format_args(
 	int fd, \
@@ -30,7 +35,7 @@ static size_t	ft_create_format_args(
 	return (ft_format(&data, args));
 }
 
-static size_t	ft_def_vfprintf_format(\
+static size_t	ft_format(\
 	t_ft_printf_format_args *data, \
 	va_list args \
 )
