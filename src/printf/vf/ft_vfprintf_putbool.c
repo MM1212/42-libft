@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   ft_vfprintf_putbool.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/15 21:21:25 by mm                #+#    #+#             */
-/*   Updated: 2024/03/09 11:28:14 by martiper         ###   ########.fr       */
+/*   Created: 2023/04/12 11:10:44 by mm                #+#    #+#             */
+/*   Updated: 2024/03/21 16:17:24 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include "libft.h"
+#include "ft_vfprintf_internal.h"
 
-char	*ft_strjoin_free(char *s1, char *s2)
+size_t	ft_def_vfprintf_putbool(int fd, bool value, t_ft_printf_flags flags)
 {
-	char	*str;
+	size_t	count;
 
-	str = ft_strjoin2((char *[]){s1, s2, NULL});
-	free(s1);
-	return (str);
+	if (value)
+		count = ft_def_vfprintf_putstr(fd, "true", flags);
+	else
+		count = ft_def_vfprintf_putstr(fd, "false", flags);
+	return (count);
 }

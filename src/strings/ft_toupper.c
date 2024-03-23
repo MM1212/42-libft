@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mm <mm@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/06 22:26:34 by mm                #+#    #+#             */
-/*   Updated: 2023/03/06 22:26:50 by mm               ###   ########.fr       */
+/*   Created: 2023/03/06 22:24:33 by mm                #+#    #+#             */
+/*   Updated: 2024/01/10 12:08:41 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-#define ALPHABET_DELTA 'a' - 'A'
-
-int	ft_tolower(int c)
+int	ft_toupper(int c)
 {
-	if (c >= 'A' && c <= 'Z')
-		c += ALPHABET_DELTA;
+	if (c >= 'a' && c <= 'z')
+		c -= ('a' - 'A');
 	return (c);
 }

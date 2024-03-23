@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin_mult.c                                  :+:      :+:    :+:   */
+/*   ft_vsprintf_putbool.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 21:41:36 by martiper          #+#    #+#             */
-/*   Updated: 2023/11/15 21:43:28 by martiper         ###   ########.fr       */
+/*   Created: 2023/04/12 11:10:44 by mm                #+#    #+#             */
+/*   Updated: 2024/03/21 16:18:42 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdarg.h>
+#include "ft_vsprintf_internal.h"
 
-char	*ft_strjoin_mult(size_t count, ...)
+size_t	ft_def_sprintf_putbool(t_ft_sprintf_buffer *buffer, bool value)
 {
-	char	*join;
-	char	*tmp;
-	va_list	args;
+	size_t	count;
 
-	va_start(args, count);
-	join = ft_strdup("");
-	while (count--)
-	{
-		tmp = join;
-		join = ft_strjoin(join, va_arg(args, char *));
-		free(tmp);
-	}
-	va_end(args);
-	return (join);
+	if (value)
+		count = ft_def_sprintf_putstr(buffer, "true");
+	else
+		count = ft_def_sprintf_putstr(buffer, "false");
+	return (count);
 }

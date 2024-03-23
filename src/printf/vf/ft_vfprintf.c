@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 12:47:24 by mm                #+#    #+#             */
-/*   Updated: 2023/11/15 22:11:17 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/21 17:22:17 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ size_t	ft_def_vfprintf_format(\
 				va_arg(args, unsigned int), 1, flags));
 	else if (mod == 'f')
 		return (ft_def_vfprintf_putfloat(fd, va_arg(args, double), flags));
+	else if (mod == 'b')
+		return (ft_def_vfprintf_putbool(fd, va_arg(args, int), flags));
 	else if (mod == '%')
 		return (ft_def_vfprintf_putchar(fd, '%', flags));
 	else
