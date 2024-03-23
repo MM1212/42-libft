@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 19:33:43 by mm                #+#    #+#             */
-/*   Updated: 2024/03/23 21:29:40 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/23 21:34:35 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,9 @@ long	ft_abs(long n);
 int		ft_absi(int n);
 double	ft_absf(double n);
 
+typedef void	(*t_lst_iter)(void *content);
+typedef void	(*t_lst_iter2)(void *content, void *data);
+
 typedef int		(*t_lst_cmp)(void *a, void *b);
 typedef bool	(*t_lst_find)(void *content, void *data);
 
@@ -91,7 +94,8 @@ t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
-void	ft_lstiter(t_list *lst, void (*f)(void *));
+void	ft_lstiter(t_list *lst, t_lst_iter f);
+void	ft_lstiter2(t_list *lst, t_lst_iter2 f, void *data);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 t_list	*ft_lstfind(t_list *lst, t_lst_find f, void *data);
 void	ft_lstremove(t_list **list, t_list *node, void (*del)(void *));
