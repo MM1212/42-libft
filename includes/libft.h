@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 19:33:43 by mm                #+#    #+#             */
-/*   Updated: 2024/03/09 11:27:31 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/23 21:29:40 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,9 @@ long	ft_abs(long n);
 int		ft_absi(int n);
 double	ft_absf(double n);
 
+typedef int		(*t_lst_cmp)(void *a, void *b);
+typedef bool	(*t_lst_find)(void *content, void *data);
+
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
@@ -90,7 +93,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-t_list	*ft_lstfind(t_list *lst, int (*f)(void *));
+t_list	*ft_lstfind(t_list *lst, t_lst_find f, void *data);
 void	ft_lstremove(t_list **list, t_list *node, void (*del)(void *));
 void	ft_lstsort(t_list *lst, int (*fn)(void *a, void *b));
 t_list	*ft_lstgoto_top(t_list **lst);
