@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 12:30:12 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/24 12:39:21 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/24 20:02:49 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 static void	init_data(t_wildcard *data, const char *pattern, const char *str)
 {
 	ft_bzero(data, sizeof(t_wildcard));
+	data->pattern = pattern;
+	data->str = str;
 	data->last_wildcard_idx = -1;
 	data->next_to_wildcard_idx = -1;
 	data->backtrack_idx = -1;
