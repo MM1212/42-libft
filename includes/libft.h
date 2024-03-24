@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 19:33:43 by mm                #+#    #+#             */
-/*   Updated: 2024/03/23 21:59:48 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/24 12:39:54 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ typedef struct s_list
 }	t_list;
 
 typedef long long	t_ft_ll;
+typedef void		(*t_lst_iter)(void *content);
+typedef void		(*t_lst_iter2)(void *content, void *data);
+typedef int			(*t_lst_cmp)(void *a, void *b);
+typedef bool		(*t_lst_find)(void *content, void *data);
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -81,13 +85,6 @@ void	ft_putnbr_fd(int n, int fd);
 long	ft_abs(long n);
 int		ft_absi(int n);
 double	ft_absf(double n);
-
-typedef void	(*t_lst_iter)(void *content);
-typedef void	(*t_lst_iter2)(void *content, void *data);
-
-typedef int		(*t_lst_cmp)(void *a, void *b);
-typedef bool	(*t_lst_find)(void *content, void *data);
-
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
@@ -107,5 +104,23 @@ t_list	*ft_lstgoto(t_list **lst, int index);
 void	ft_lstfclear(t_list **lst, void (*del)(void *));
 void	ft_lstadd_after(t_list **list, t_list *ref, t_list *node);
 void	ft_lstadd_before(t_list **list, t_list *ref, t_list *node);
+
+/* Wildcard Engine */
+
+/* Bruteforce Method */
+typedef struct s_wildcard
+{
+	const char	*str;
+	const char	*pattern;
+	size_t		s_len;
+	size_t		p_len;
+	size_t		s_idx;
+	size_t		p_idx;
+	int			last_wildcard_idx;
+	int			backtrack_idx;
+	int			next_to_wildcard_idx;
+}	t_wildcard;
+
+bool	ft_wildcard_match(const char *pattern, const char *str);
 
 #endif

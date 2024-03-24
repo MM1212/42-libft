@@ -6,7 +6,7 @@
 #    By: martiper <martiper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 15:25:36 by martiper          #+#    #+#              #
-#    Updated: 2024/03/23 22:00:58 by martiper         ###   ########.fr        #
+#    Updated: 2024/03/24 12:40:33 by martiper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,13 +102,16 @@ STRINGS_SRCS =	strings/ft_countchar.c \
 				strings/ft_strrep.c \
 				strings/ft_toupper.c
 
+PATTERN_MATCHING_SRCS = wildcards/bruteforce.c
+
 SRCS =	$(PRINTF_SRCS) \
 		$(GNL_SRCS) \
 		$(IO_SRCS) \
 		$(LISTS_SRCS) \
 		$(MEMORY_SRCS) \
 		$(NBRS_SRCS) \
-		$(STRINGS_SRCS)
+		$(STRINGS_SRCS) \
+		$(PATTERN_MATCHING_SRCS)
 
 OBJ_DIR = objs
 
