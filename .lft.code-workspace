@@ -73,7 +73,10 @@
 		"ft_printf.h": "c",
 		"get_next_line.h": "c",
 		"ht_internal.h": "c",
-		"hashtable.h": "c"
+		"hashtable.h": "c",
+		"string": "c",
+		"unordered_map": "c",
+		"string_view": "c"
 	},
 	"files.exclude": {
 		"**/*.o": true,

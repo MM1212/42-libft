@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 13:29:54 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/24 14:23:42 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/24 17:26:11 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,9 @@ bool		hashtable_set_item(\
 );
 bool		hashtable_remove_item(t_hashtable *table, const char *key);
 void		hashtable_destroy(t_hashtable *table);
-
+t_ht_item	*hashtable_find(\
+	t_hashtable *table, \
+	t_hashtable_find f, \
+	void *data \
+);
 #endif

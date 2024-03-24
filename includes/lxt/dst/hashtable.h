@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 13:01:27 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/24 14:26:02 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/24 17:27:36 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ typedef void					(*t_hashtable_foreach)(\
 	const char *key, \
 	void *value, \
 	void *data \
+);
+typedef bool					(*t_hashtable_find)(\
+	const char *key, \
+	const void *value, \
+	void *data
 );
 typedef void					(*t_hashtable_delete)(\
 	void *value \
@@ -56,6 +61,11 @@ typedef void					(*t_hashtable_foreach_m)(\
 	t_hashtable_foreach f, \
 	void *data \
 );
+typedef t_hashtable_item		*(*t_hashtable_find_m)(\
+	t_hashtable *table, \
+	t_hashtable_find f, \
+	void *data \
+);
 
 struct s_hashtable_item
 {
@@ -74,6 +84,7 @@ struct s_hashtable
 	t_hashtable_hash		hash;
 	t_hashtable_delete		deletef;
 	t_hashtable_foreach_m	foreach;
+	t_hashtable_find_m		find;
 	t_hashtable_get			get;
 	t_hashtable_add			add;
 	t_hashtable_set			set;

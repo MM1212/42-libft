@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 13:47:27 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/24 14:23:49 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/24 17:26:48 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,28 @@ void	hashtable_destroy(t_hashtable *ht)
 	}
 	free(ht->items);
 	free(ht);
+}
+
+t_ht_item	*hashtable_find(\
+	t_ht* ht, \
+	t_hashtable_find f, \
+	void *data
+)
+{
+	size_t		i;
+	t_ht_item	*cell;
+
+	i = 0;
+	while (i < ht->size)
+	{
+		cell = ht->items[i];
+		while (cell)
+		{
+			if (f(cell->key, cell->value, data))
+				return (cell);
+			cell = cell->next;
+		}
+		i++;
+	}
+	return (NULL);
 }
