@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:15:07 by mm                #+#    #+#             */
-/*   Updated: 2024/03/23 19:37:05 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/24 21:43:00 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ static size_t	putnbr_unsigned(\
 {
 	size_t	count;
 
-	count = 1;
+	count = 0;
 	if (n >= 10)
-		count += spf_putnbr_unsigned(buffer, n / 10, flags);
+		count += putnbr_unsigned(buffer, n / 10, flags);
 	if (buffer->size > 0)
 		count += spf_putchar(buffer, NUMERIC_CHARS[n % 10], flags);
 	return (count);
@@ -81,6 +81,7 @@ size_t	spf_putnbr_unsigned(\
 	if (flags.positive)
 		len++;
 	count += spf_output_padding(buffer, len, flags, true);
+	flags.disabled = true;
 	if (flags.space)
 		count += spf_putchar(buffer, ' ', flags);
 	else if (flags.positive)

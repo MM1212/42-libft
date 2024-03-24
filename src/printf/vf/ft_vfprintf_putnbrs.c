@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:15:07 by mm                #+#    #+#             */
-/*   Updated: 2024/03/23 19:35:46 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/24 21:36:29 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ size_t	vfpf_unsigned(\
 	if (flags.positive)
 		len++;
 	count += vfpf_output_padding(fd, len, flags, true);
+	flags.disabled = true;
 	if (flags.space)
 		count += vfpf_putchar(fd, ' ', flags);
 	else if (flags.positive)
