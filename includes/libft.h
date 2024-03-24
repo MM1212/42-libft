@@ -6,15 +6,15 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 19:33:43 by mm                #+#    #+#             */
-/*   Updated: 2024/03/24 12:39:54 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/24 13:55:17 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include "printf/ft_printf.h"
-# include "get_next_line.h"
+# include <printf/ft_printf.h>
+# include <get_next_line.h>
 # include <stdbool.h>
 # include <stdlib.h>
 # include <unistd.h>

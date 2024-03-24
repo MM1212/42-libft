@@ -6,7 +6,7 @@
 #    By: martiper <martiper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 15:25:36 by martiper          #+#    #+#              #
-#    Updated: 2024/03/24 12:40:33 by martiper         ###   ########.fr        #
+#    Updated: 2024/03/24 14:29:29 by martiper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -104,6 +104,13 @@ STRINGS_SRCS =	strings/ft_countchar.c \
 
 PATTERN_MATCHING_SRCS = wildcards/bruteforce.c
 
+DST_HASHTABLE_SRCS = data_structs/hashtable/hashes.c \
+					data_structs/hashtable/hashtable.c \
+					data_structs/hashtable/methods.c \
+					data_structs/hashtable/methods2.c
+
+DST_SRCS =	$(DST_HASHTABLE_SRCS)
+
 SRCS =	$(PRINTF_SRCS) \
 		$(GNL_SRCS) \
 		$(IO_SRCS) \
@@ -111,7 +118,8 @@ SRCS =	$(PRINTF_SRCS) \
 		$(MEMORY_SRCS) \
 		$(NBRS_SRCS) \
 		$(STRINGS_SRCS) \
-		$(PATTERN_MATCHING_SRCS)
+		$(PATTERN_MATCHING_SRCS) \
+		$(DST_SRCS)
 
 OBJ_DIR = objs
 
@@ -119,7 +127,7 @@ SRC_FILES = $(addprefix $(SRCS_DIR)/, $(SRCS))
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Iincludes -g
+CFLAGS = -Wall -Wextra -Werror -Iincludes -gdwarf-2 -g3
 
 ARCH_DIR = bin
 NAME =	$(addprefix $(ARCH_DIR)/, libft.a)
