@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 19:33:43 by mm                #+#    #+#             */
-/*   Updated: 2024/03/24 13:55:17 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/24 18:26:39 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdbool.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdint.h>
 
 typedef struct s_list
 {
@@ -85,6 +86,8 @@ void	ft_putnbr_fd(int n, int fd);
 long	ft_abs(long n);
 int		ft_absi(int n);
 double	ft_absf(double n);
+size_t	ft_nbrlen_base(long nbr, uint32_t base);
+size_t	ft_unbrlen_base(unsigned long nbr, uint32_t base);
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
@@ -104,7 +107,6 @@ t_list	*ft_lstgoto(t_list **lst, int index);
 void	ft_lstfclear(t_list **lst, void (*del)(void *));
 void	ft_lstadd_after(t_list **list, t_list *ref, t_list *node);
 void	ft_lstadd_before(t_list **list, t_list *ref, t_list *node);
-
 /* Wildcard Engine */
 
 /* Bruteforce Method */
