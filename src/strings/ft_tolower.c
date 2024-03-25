@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 22:26:34 by mm                #+#    #+#             */
-/*   Updated: 2024/03/25 13:17:09 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/25 17:58:24 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_tolower(int c)
 	return (c);
 }
 
-bool ft_islower(int c)
+bool	ft_islower(int c)
 {
 	return (c >= 'a' && c <= 'z');
 }

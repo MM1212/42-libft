@@ -6,7 +6,7 @@
 #    By: martiper <martiper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 15:25:36 by martiper          #+#    #+#              #
-#    Updated: 2024/03/25 13:16:29 by martiper         ###   ########.fr        #
+#    Updated: 2024/03/25 17:54:31 by martiper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,6 +106,10 @@ STRINGS_SRCS =	strings/ft_countchar.c \
 
 PATTERN_MATCHING_SRCS = wildcards/bruteforce.c
 
+DATE_SRCS = date/date.c date/mods/utils.c \
+			date/mods/1.c date/mods/2.c date/mods/3.c \
+			date/mods/4.c date/mods/5.c
+
 DST_HASHTABLE_SRCS = data_structs/hashtable/hashes.c \
 					data_structs/hashtable/hashtable.c \
 					data_structs/hashtable/methods.c \
@@ -121,7 +125,8 @@ SRCS =	$(PRINTF_SRCS) \
 		$(NBRS_SRCS) \
 		$(STRINGS_SRCS) \
 		$(PATTERN_MATCHING_SRCS) \
-		$(DST_SRCS)
+		$(DST_SRCS) \
+		$(DATE_SRCS)
 
 OBJ_DIR = objs
 

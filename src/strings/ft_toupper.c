@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 22:24:33 by mm                #+#    #+#             */
-/*   Updated: 2024/03/25 13:17:03 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/25 17:58:29 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_toupper(int c)
 	return (c);
 }
 
-bool ft_isupper(int c)
+bool	ft_isupper(int c)
 {
 	return (c >= 'A' && c <= 'Z');
 }

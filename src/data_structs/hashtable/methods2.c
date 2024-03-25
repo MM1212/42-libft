@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 13:47:27 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/24 17:26:48 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/25 17:58:16 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ bool	hashtable_remove_item(\
 			else
 				ht->items[hash] = cell->next;
 			ht->deletef(cell->value);
-			free((void*)cell->key);
+			free((void *)cell->key);
 			free(cell);
 			ht->count--;
 			return (true);
@@ -60,7 +60,7 @@ void	hashtable_destroy(t_hashtable *ht)
 			tmp = cell;
 			cell = cell->next;
 			ht->deletef(tmp->value);
-			free((void*)tmp->key);
+			free((void *)tmp->key);
 			free(tmp);
 		}
 		i++;
@@ -70,7 +70,7 @@ void	hashtable_destroy(t_hashtable *ht)
 }
 
 t_ht_item	*hashtable_find(\
-	t_ht* ht, \
+	t_ht *ht, \
 	t_hashtable_find f, \
 	void *data
 )

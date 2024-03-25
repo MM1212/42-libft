@@ -76,7 +76,9 @@
 		"hashtable.h": "c",
 		"string": "c",
 		"unordered_map": "c",
-		"string_view": "c"
+		"string_view": "c",
+		"time.h": "c",
+		"mods.h": "c"
 	},
 	"files.exclude": {
 		"**/*.o": true,
