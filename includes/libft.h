@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 19:33:43 by mm                #+#    #+#             */
-/*   Updated: 2024/03/25 13:17:21 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/25 22:09:52 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef long long	t_ft_ll;
 typedef void		(*t_lst_iter)(void *content);
 typedef void		(*t_lst_iter2)(void *content, void *data);
 typedef int			(*t_lst_cmp)(void *a, void *b);
+typedef int			(*t_lst_cmp2)(void *a, void *b, void *data);
 typedef bool		(*t_lst_find)(void *content, void *data);
 
 int		ft_isalpha(int c);
@@ -105,7 +106,8 @@ void	ft_lstiter2(t_list *lst, t_lst_iter2 f, void *data);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 t_list	*ft_lstfind(t_list *lst, t_lst_find f, void *data);
 void	ft_lstremove(t_list **list, t_list *node, void (*del)(void *));
-void	ft_lstsort(t_list *lst, int (*fn)(void *a, void *b));
+void	ft_lstsort(t_list *lst, t_lst_cmp cmp);
+void	ft_lstsort2(t_list *lst, t_lst_cmp2 cmp, void *data);
 t_list	*ft_lstgoto_top(t_list **lst);
 t_list	*ft_lstgoto_end(t_list **lst);
 t_list	*ft_lstgoto(t_list **lst, int index);
