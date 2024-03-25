@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 19:33:43 by mm                #+#    #+#             */
-/*   Updated: 2024/03/24 18:26:39 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/25 13:17:21 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,11 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
+bool	ft_isupper(int c);
+bool	ft_islower(int c);
+char	*ft_struppercase(char *str);
+char	*ft_strlowercase(char *str);
+char	*ft_str_revcase(char *str);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 bool	ft_strchr_set(const char *str, const char *set);

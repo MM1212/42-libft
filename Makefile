@@ -6,7 +6,7 @@
 #    By: martiper <martiper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 15:25:36 by martiper          #+#    #+#              #
-#    Updated: 2024/03/24 18:26:01 by martiper         ###   ########.fr        #
+#    Updated: 2024/03/25 13:16:29 by martiper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,7 +101,8 @@ STRINGS_SRCS =	strings/ft_countchar.c \
 				strings/ft_strjoin_mult.c \
 				strings/ft_strmapi.c \
 				strings/ft_strrep.c \
-				strings/ft_toupper.c
+				strings/ft_toupper.c \
+				strings/ft_strcase.c
 
 PATTERN_MATCHING_SRCS = wildcards/bruteforce.c
 
