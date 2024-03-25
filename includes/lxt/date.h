@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 17:48:47 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/25 18:23:05 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/25 21:12:10 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,14 @@
 	%k: Hour (24-hour clock) as a decimal number padded with spaces [0,23].
 	%l: Hour (12-hour clock) as a decimal number padded with spaces [1,12].
 	%M: Minute as a decimal number [00,59].
+	%N: nanoseconds (‘000000000’…‘999999999’).
 	%P: Meridian indicator in lowercase [am, pm].
 	%p: Meridian indicator in uppercase [AM, PM].
 	%s: Seconds since the Epoch.
 	%S: Second as a decimal number [00,59].
 	%X: ctime(3) [12-19]
 	%z: Timezone offset in the form +HHMM or -HHMM.
+	%Z: Timezone name or abbreviation.
   DATE:
 	%a: Abbreviated weekday name.
 	%A: Full weekday name.

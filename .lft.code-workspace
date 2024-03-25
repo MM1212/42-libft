@@ -78,7 +78,8 @@
 		"unordered_map": "c",
 		"string_view": "c",
 		"time.h": "c",
-		"mods.h": "c"
+		"mods.h": "c",
+		"date.h": "c"
 	},
 	"files.exclude": {
 		"**/*.o": true,

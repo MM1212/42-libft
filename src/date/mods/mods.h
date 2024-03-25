@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 17:50:28 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/25 18:22:56 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/25 21:17:49 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ void			mod_handler_q(t_date_mod_handler_data *data);
 void			mod_handler_u(t_date_mod_handler_data *data);
 void			mod_handler_w(t_date_mod_handler_data *data);
 void			mod_handler_y(t_date_mod_handler_data *data);
+void			mod_handler_z_uppcase(t_date_mod_handler_data *data);
 void			mod_handler_modulo(t_date_mod_handler_data *data);
 void			mod_handler_newline(t_date_mod_handler_data *data);
 void			mod_handler_tab(t_date_mod_handler_data *data);

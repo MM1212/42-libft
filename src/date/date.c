@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:36:39 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/25 18:21:43 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/25 21:18:23 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static const t_date_mod	g_date_mods[] = {\
 	{'p', "s", 2, mod_handler_p}, \
 	{'s', "d", 0, mod_handler_s}, \
 	{'z', "d", 4, mod_handler_z}, \
+	{'Z', "s", 3, mod_handler_z_uppcase}, \
 	{'a', "s", 3, mod_handler_a}, \
 	{'b', "s", 3, mod_handler_b}, \
 	{'C', "d", 2, mod_handler_c_uppcase}, \
