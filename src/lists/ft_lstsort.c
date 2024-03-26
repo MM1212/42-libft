@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 11:52:10 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/26 17:28:06 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/26 20:00:56 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,24 @@ static void	swap(void **a, void **b)
 	*b = t;
 }
 
-static t_list	*partition(t_list *l, t_list *h, t_lst_cmp2 cmp, void *data)
+static t_list	*partition(\
+	t_list *low, \
+	t_list *high, \
+	t_lst_cmp2 cmp, \
+	void *data \
+)
 {
 	t_list	*i;
 	t_list	*j;
 
-	i = l->prev;
-	j = l;
-	while (j != h)
+	i = low->prev;
+	j = low;
+	while (j != high)
 	{
-		if (cmp(j->content, h->content, data) < 0)
+		if (cmp(j->content, high->content, data) < 0)
 		{
 			if (!i)
-				i = l;
+				i = low;
 			else
 				i = i->next;
 			swap(&(i->content), &(j->content));
@@ -41,27 +46,27 @@ static t_list	*partition(t_list *l, t_list *h, t_lst_cmp2 cmp, void *data)
 		j = j->next;
 	}
 	if (!i)
-		i = l;
+		i = low;
 	else
 		i = i->next;
-	swap(&(i->content), &(h->content));
+	swap(&(i->content), &(high->content));
 	return (i);
 }
 
 static void	quick_sort(\
-	t_list *left, \
-	t_list *right, \
+	t_list *low, \
+	t_list *high, \
 	t_lst_cmp2 cmp, \
 	void *data \
 )
 {
 	t_list	*pivot;
 
-	if (right == NULL || left == right || left == right->next)
+	if (high == NULL || low == high || low == high->next)
 		return ;
-	pivot = partition(left, right, cmp, data);
-	quick_sort(left, pivot->prev, cmp, data);
-	quick_sort(pivot->next, right, cmp, data);
+	pivot = partition(low, high, cmp, data);
+	quick_sort(low, pivot->prev, cmp, data);
+	quick_sort(pivot->next, high, cmp, data);
 }
 
 void	ft_lstsort2(t_list *lst, t_lst_cmp2 cmp, void *data)

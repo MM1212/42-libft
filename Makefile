@@ -6,7 +6,7 @@
 #    By: martiper <martiper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 15:25:36 by martiper          #+#    #+#              #
-#    Updated: 2024/03/25 17:54:31 by martiper         ###   ########.fr        #
+#    Updated: 2024/03/26 20:03:38 by martiper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -115,7 +115,15 @@ DST_HASHTABLE_SRCS = data_structs/hashtable/hashes.c \
 					data_structs/hashtable/methods.c \
 					data_structs/hashtable/methods2.c
 
-DST_SRCS =	$(DST_HASHTABLE_SRCS)
+DST_VECTOR_SRCS = data_structs/vector/vector.c \
+					data_structs/vector/methods.c \
+					data_structs/vector/methods2.c \
+					data_structs/vector/methods3.c \
+					data_structs/vector/methods4.c \
+					data_structs/vector/sort.c
+
+DST_SRCS =	$(DST_HASHTABLE_SRCS) \
+			$(DST_VECTOR_SRCS)
 
 SRCS =	$(PRINTF_SRCS) \
 		$(GNL_SRCS) \

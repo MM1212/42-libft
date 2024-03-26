@@ -79,7 +79,8 @@
 		"string_view": "c",
 		"time.h": "c",
 		"mods.h": "c",
-		"date.h": "c"
+		"date.h": "c",
+		"vt_internal.h": "c"
 	},
 	"files.exclude": {
 		"**/*.o": true,

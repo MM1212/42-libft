@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   methods4.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/06 22:57:09 by mm                #+#    #+#             */
-/*   Updated: 2024/03/26 19:17:41 by martiper         ###   ########.fr       */
+/*   Created: 2024/03/26 19:55:00 by martiper          #+#    #+#             */
+/*   Updated: 2024/03/26 19:55:08 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "vt_internal.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	*vector_find(t_vector *handle, t_vector_find_f f, void *data)
 {
-	void	*buffer;
+	size_t	i;
 
-	if (nmemb == 0 || size == 0)
-		return (NULL);
-	if ((nmemb * size) / size != nmemb)
-		return (NULL);
-	buffer = malloc(nmemb * size);
-	if (!buffer)
-		return (NULL);
-	ft_bzero(buffer, (nmemb * size));
-	return (buffer);
+	i = 0;
+	while (i < handle->size)
+	{
+		if (f(vector_at(handle, i), i, data))
+			return (vector_at(handle, i));
+		i++;
+	}
+	return (NULL);
 }
