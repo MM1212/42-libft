@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 13:01:27 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/24 17:27:36 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/26 21:52:57 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ struct s_hashtable
 	t_hashtable_item		**items;
 	size_t					size;
 	size_t					count;
-	size_t					item_size;
 	t_hashtable_hash		hash;
 	t_hashtable_delete		deletef;
 	t_hashtable_foreach_m	foreach;

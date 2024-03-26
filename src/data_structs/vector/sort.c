@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 19:48:01 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/26 21:37:05 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/26 22:40:35 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,32 @@ void	vector_sort2(t_vector *handle, t_vector_cmp2_f cmp, void *data)
 		handle, \
 		(t_vt_sort_pair){handle->size - 1, 0}, \
 		cmp, data \
+	);
+}
+
+t_vector	*vector_sort3(\
+	t_vector *handle, \
+	t_vector_cmp_f cmp, \
+	void *data \
+)
+{
+	size_t		i;
+	t_vector	*buffer;
+
+	i = 0;
+	buffer = vector_create3(\
+		sizeof(void *), \
+		handle->size, \
+		NULL \
+	);
+	while (i < handle->size)
+	{
+		*(void**)buffer->at(buffer, i) = handle->at(handle, i);
+		i++;
+	}
+	quick_sort(\
+		buffer, \
+		(t_vt_sort_pair){buffer->size - 1, 0}, \
+		(t_vector_cmp2_f)cmp, data \
 	);
 }

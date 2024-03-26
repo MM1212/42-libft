@@ -80,7 +80,8 @@
 		"time.h": "c",
 		"mods.h": "c",
 		"date.h": "c",
-		"vt_internal.h": "c"
+		"vt_internal.h": "c",
+		"vector.h": "c"
 	},
 	"files.exclude": {
 		"**/*.o": true,
