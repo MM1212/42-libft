@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 13:29:54 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/26 23:02:30 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/26 23:27:17 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,5 @@ t_ht_item	*hashtable_find(\
 	t_hashtable_find f, \
 	void *data \
 );
+void		hashtable_clear(t_hashtable *table);
 #endif

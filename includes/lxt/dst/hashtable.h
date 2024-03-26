@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 13:01:27 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/26 23:05:57 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/26 23:26:55 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,9 @@ typedef t_hashtable_item		*(*t_hashtable_find_m)(\
 	t_hashtable_find f, \
 	void *data \
 );
+typedef void					(*t_hashtable_clear)(\
+	t_hashtable *table \
+);
 
 struct s_hashtable_item
 {
@@ -95,6 +98,7 @@ struct s_hashtable
 	t_hashtable_set			set;
 	t_hashtable_remove		remove;
 	t_hashtable_destroy		destroy;
+	t_hashtable_clear		clear;
 };
 
 # define HASHTABLE_DEFAULT_SIZE 61

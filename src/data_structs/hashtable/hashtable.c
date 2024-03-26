@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 13:53:58 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/26 23:03:03 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/26 23:28:23 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ t_hashtable	*hashtable_create(\
 	ht->destroy = hashtable_destroy;
 	ht->foreach = hashtable_foreach_item;
 	ht->find = hashtable_find;
+	ht->clear = hashtable_clear;
 	return (ht);
 }
