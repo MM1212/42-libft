@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 19:10:09 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/26 20:02:07 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/26 22:51:05 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void	bind_methods(t_vector *handle)
 	handle->find = vector_find;
 	handle->sort = vector_sort;
 	handle->sort2 = vector_sort2;
+	handle->sort3 = vector_sort3;
 	handle->clear = vector_clear;
 	handle->destroy = vector_destroy;
 	handle->resize = vector_resize;
