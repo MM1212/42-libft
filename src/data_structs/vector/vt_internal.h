@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 19:06:21 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/26 22:38:21 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/26 22:45:59 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,12 @@ t_vector	*vector_map(t_vector *self, t_vector_map_f f, void *arg);
 void		*vector_find(t_vector *self, t_vector_find_f f, void *arg);
 void		vector_sort(t_vector *self, t_vector_cmp_f cmp);
 void		vector_sort2(t_vector *self, t_vector_cmp2_f cmp, void *arg);
-t_vector	*vector_sort3(t_vector *self, t_vector_cmp2_f cmp, void *arg);
+t_vector	*vector_sort3(\
+	t_vector *self, \
+	t_vector_cmp2_f cmp, \
+	void *arg, \
+	t_vector *buffer \
+);
 void		vector_clear(t_vector *self);
 void		vector_destroy(t_vector *self);
 bool		vector_resize(t_vector *self, size_t new_size);

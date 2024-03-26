@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 19:00:21 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/26 22:39:02 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/26 22:46:20 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,9 @@ typedef void			(*t_vector_sort2)(\
 // and sort the array using cmp function
 typedef t_vector		*(*t_vector_sort3)(\
 	t_vector *self, \
-	t_vector_cmp_f cmp, \
-	void *arg \
+	t_vector_cmp2_f cmp, \
+	void *arg, \
+	t_vector *buffer \
 );
 typedef void			(*t_vector_clear)(\
 	t_vector *self \
