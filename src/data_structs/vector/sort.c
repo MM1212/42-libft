@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 19:48:01 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/26 22:46:34 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/26 22:57:30 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,10 @@ t_vector	*vector_sort3(\
 	{
 		buffer = vector_create3(\
 			sizeof(void *), \
-			handle->size, \
+			1, \
 			NULL \
 		);
+		buffer->resize(buffer, handle->size);
 		while (i < handle->size)
 		{
 			*(void**)buffer->at(buffer, i) = handle->at(handle, i);
