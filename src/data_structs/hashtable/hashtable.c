@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 13:53:58 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/24 17:27:08 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/26 23:03:03 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 t_hashtable	*hashtable_create(\
 	size_t size, \
 	t_hashtable_hash hash, \
+	t_hashtable_cmp cmp, \
 	t_hashtable_delete delete_fn \
 )
 {
@@ -28,6 +29,7 @@ t_hashtable	*hashtable_create(\
 	ht->size = size;
 	ht->hash = hash;
 	ht->deletef = delete_fn;
+	ht->cmp = cmp;
 	ht->items = ft_calloc(size, sizeof(t_ht_item *));
 	if (!ht->items)
 	{

@@ -6,21 +6,21 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 13:31:10 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/24 14:18:12 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/26 23:06:19 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ht_internal.h"
 #include <libft.h>
 
-t_ht_item	*hashtable_create_item(const char *key, void *value)
+t_ht_item	*hashtable_create_item(const void *key, void *value)
 {
 	t_ht_item	*item;
 
 	item = ft_calloc(1, sizeof(t_ht_item));
 	if (!item)
 		return (NULL);
-	item->key = ft_strdup(key);
+	item->key = key;
 	item->value = value;
 	return (item);
 }
@@ -49,7 +49,7 @@ void	hashtable_foreach_item(\
 
 void	*hashtable_get_item(\
 	t_hashtable *ht, \
-	const char *key
+	const void *key
 )
 {
 	size_t		hash;
@@ -59,7 +59,7 @@ void	*hashtable_get_item(\
 	cell = ht->items[hash];
 	while (cell)
 	{
-		if (ft_strcmp(cell->key, key) == 0)
+		if (ht->cmp(cell->key, key) == 0)
 			return (cell->value);
 		cell = cell->next;
 	}
@@ -68,7 +68,7 @@ void	*hashtable_get_item(\
 
 bool	hashtable_add_item(\
 	t_hashtable *ht, \
-	const char *key, \
+	const void *key, \
 	void *value
 )
 {
@@ -80,7 +80,7 @@ bool	hashtable_add_item(\
 	cell = ht->items[hash];
 	while (cell)
 	{
-		if (ft_strcmp(cell->key, key) == 0)
+		if (ht->cmp(cell->key, key) == 0)
 			return (false);
 		cell = cell->next;
 	}
@@ -101,7 +101,7 @@ bool	hashtable_add_item(\
 
 bool	hashtable_set_item(\
 	t_hashtable *ht, \
-	const char *key, \
+	const void *key, \
 	void *value
 )
 {
@@ -112,9 +112,10 @@ bool	hashtable_set_item(\
 	cell = ht->items[hash];
 	while (cell)
 	{
-		if (ft_strcmp(cell->key, key) == 0)
+		if (ht->cmp(cell->key, key) == 0)
 		{
-			ht->deletef(cell->value);
+			if (ht->deletef)
+				ht->deletef(cell->value, NULL);
 			cell->value = value;
 			return (true);
 		}

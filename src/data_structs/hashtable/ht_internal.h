@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 13:29:54 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/24 17:26:11 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/26 23:02:30 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,23 @@
 typedef t_hashtable			t_ht;
 typedef t_hashtable_item	t_ht_item;
 
-t_ht_item	*hashtable_create_item(const char *key, void *value);
+t_ht_item	*hashtable_create_item(const void *key, void *value);
 void		hashtable_foreach_item(\
 	t_hashtable *table, \
 	t_hashtable_foreach f, \
 	void *data);
-void		*hashtable_get_item(t_hashtable *table, const char *key);
+void		*hashtable_get_item(t_hashtable *table, const void *key);
 bool		hashtable_add_item(\
 	t_hashtable *table, \
-	const char *key, \
+	const void *key, \
 	void *value \
 );
 bool		hashtable_set_item(\
 	t_hashtable *table, \
-	const char *key, \
+	const void *key, \
 	void *value \
 );
-bool		hashtable_remove_item(t_hashtable *table, const char *key);
+bool		hashtable_remove_item(t_hashtable *table, const void *key);
 void		hashtable_destroy(t_hashtable *table);
 t_ht_item	*hashtable_find(\
 	t_hashtable *table, \

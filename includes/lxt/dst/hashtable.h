@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 13:01:27 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/26 21:52:57 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/26 23:05:57 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,39 +19,44 @@
 typedef struct s_hashtable_item	t_hashtable_item;
 typedef struct s_hashtable		t_hashtable;
 
+typedef int						(*t_hashtable_cmp)(\
+	const void *elem1, \
+	const void *elem2 \
+);
 typedef void					(*t_hashtable_foreach)(\
-	const char *key, \
+	const void *key, \
 	void *value, \
 	void *data \
 );
 typedef bool					(*t_hashtable_find)(\
-	const char *key, \
+	const void *key, \
 	const void *value, \
 	void *data
 );
 typedef void					(*t_hashtable_delete)(\
-	void *value \
+	void *value, \
+	void *key
 );
 typedef size_t					(*t_hashtable_hash)(\
-	const char *key \
+	const void *key \
 );
 typedef bool					(*t_hashtable_add)(\
 	t_hashtable *table, \
-	const char *key, \
+	const void *key, \
 	void *value \
 );
 typedef bool					(*t_hashtable_set)(\
 	t_hashtable *table, \
-	const char *key, \
+	const void *key, \
 	void *value \
 );
 typedef void					*(*t_hashtable_get)(\
 	t_hashtable *table, \
-	const char *key \
+	const void *key \
 );
 typedef bool					(*t_hashtable_remove)(\
 	t_hashtable *table, \
-	const char *key \
+	const void *key \
 );
 typedef void					(*t_hashtable_destroy)(\
 	t_hashtable *table \
@@ -69,7 +74,7 @@ typedef t_hashtable_item		*(*t_hashtable_find_m)(\
 
 struct s_hashtable_item
 {
-	const char			*key;
+	const void			*key;
 	void				*value;
 	t_hashtable_item	*next;
 	t_hashtable			*table;
@@ -81,6 +86,7 @@ struct s_hashtable
 	size_t					size;
 	size_t					count;
 	t_hashtable_hash		hash;
+	t_hashtable_cmp			cmp;
 	t_hashtable_delete		deletef;
 	t_hashtable_foreach_m	foreach;
 	t_hashtable_find_m		find;
@@ -109,6 +115,7 @@ size_t		hashtable_djb2_hash(const char *key);
 t_hashtable	*hashtable_create(\
 	size_t size, \
 	t_hashtable_hash hash, \
+	t_hashtable_cmp cmp, \
 	t_hashtable_delete delete_fn \
 );
 
