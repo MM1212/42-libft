@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 11:52:10 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/26 17:26:30 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/26 17:28:06 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static t_list	*partition(t_list *l, t_list *h, t_lst_cmp2 cmp, void *data)
 				i = i->next;
 			swap(&(i->content), &(j->content));
 		}
+		j = j->next;
 	}
 	if (!i)
 		i = l;
