@@ -6,13 +6,13 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 19:48:01 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/26 20:04:49 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/26 21:37:05 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vt_internal.h"
 
-size_t	partition(\
+ssize_t	partition(\
 	t_vector *vector, \
 	t_vt_sort_pair pair, \
 	t_vector_cmp2_f cmp, \
@@ -20,8 +20,8 @@ size_t	partition(\
 )
 {
 	void	*pivot;
-	size_t	i;
-	size_t	j;
+	ssize_t	i;
+	ssize_t	j;
 
 	pivot = vector->at(vector, pair.low);
 	i = pair.low;
@@ -48,7 +48,7 @@ void	quick_sort(\
 	void *data \
 )
 {
-	size_t	partition_idx;
+	ssize_t	partition_idx;
 
 	if (pair.low >= pair.high)
 		return ;

@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 19:06:21 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/26 20:04:12 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/26 21:37:04 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include "lxt/dst/vector.h"
 
 typedef struct s_vt_sort_pair {
-	size_t	high;
-	size_t	low;
+	ssize_t	high;
+	ssize_t	low;
 }	t_vt_sort_pair;
 
 void		vector_call_delete_all(t_vector *self);
