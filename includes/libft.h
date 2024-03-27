@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 19:33:43 by mm                #+#    #+#             */
-/*   Updated: 2024/03/27 18:18:48 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/27 21:24:20 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ int		ft_absi(int n);
 double	ft_absf(double n);
 size_t	ft_nbrlen_base(long nbr, uint32_t base);
 size_t	ft_unbrlen_base(unsigned long nbr, uint32_t base);
+size_t	ft_floatlen(double n);
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);

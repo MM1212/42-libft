@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 18:24:21 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/24 18:27:07 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/27 21:24:05 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,17 @@ size_t	ft_unbrlen_base(unsigned long n, uint32_t base)
 		len++;
 		n /= base;
 	}
+	return (len);
+}
+
+size_t	ft_floatlen(double n)
+{
+	size_t	len;
+
+	len = ft_nbrlen_base((long)n, 10);
+	if (n < 0)
+		n = -n;
+	if (n - (long)n > 0)
+		len += 1 + ft_unbrlen_base((unsigned long)((n - (long)n) * 1000000000), 10);
 	return (len);
 }
