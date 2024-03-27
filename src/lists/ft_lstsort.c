@@ -6,78 +6,80 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 11:52:10 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/26 20:00:56 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/27 18:22:27 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	swap(void **a, void **b)
+static t_list	*get_mid_node(t_list *node)
 {
-	void	*t;
+	t_list	*slow;
+	t_list	*fast;
 
-	t = *a;
-	*a = *b;
-	*b = t;
-}
-
-static t_list	*partition(\
-	t_list *low, \
-	t_list *high, \
-	t_lst_cmp2 cmp, \
-	void *data \
-)
-{
-	t_list	*i;
-	t_list	*j;
-
-	i = low->prev;
-	j = low;
-	while (j != high)
+	slow = node;
+	fast = node;
+	while (fast->next && fast->next->next)
 	{
-		if (cmp(j->content, high->content, data) < 0)
-		{
-			if (!i)
-				i = low;
-			else
-				i = i->next;
-			swap(&(i->content), &(j->content));
-		}
-		j = j->next;
+		slow = slow->next;
+		fast = fast->next->next;
 	}
-	if (!i)
-		i = low;
-	else
-		i = i->next;
-	swap(&(i->content), &(high->content));
-	return (i);
+	return (slow);
 }
 
-static void	quick_sort(\
-	t_list *low, \
-	t_list *high, \
+static t_list	*merge(\
+	t_list *left, \
+	t_list *right, \
 	t_lst_cmp2 cmp, \
 	void *data \
 )
 {
-	t_list	*pivot;
-
-	if (high == NULL || low == high || low == high->next)
-		return ;
-	pivot = partition(low, high, cmp, data);
-	quick_sort(low, pivot->prev, cmp, data);
-	quick_sort(pivot->next, high, cmp, data);
+	if (!left)
+		return (right);
+	if (!right)
+		return (left);
+	if (cmp(left->content, right->content, data) <= 0)
+	{
+		left->next = merge(left->next, right, cmp, data);
+		left->next->prev = left;
+		left->prev = NULL;
+		return (left);
+	}
+	else
+	{
+		right->next = merge(left, right->next, cmp, data);
+		right->next->prev = right;
+		right->prev = NULL;
+		return (right);
+	}
 }
 
-void	ft_lstsort2(t_list *lst, t_lst_cmp2 cmp, void *data)
+static t_list	*merge_sort(t_list *node, t_lst_cmp2 cmp, void *data)
 {
-	t_list	*last;
+	t_list	*mid;
+	t_list	*next;
+	t_list	*left;
+	t_list	*right;
 
-	last = ft_lstlast(lst);
-	quick_sort(lst, last, cmp, data);
+	if (!node || !node->next)
+		return (node);
+	mid = get_mid_node(node);
+	next = mid->next;
+	mid->next = NULL;
+	next->prev = NULL;
+	left = merge_sort(node, cmp, data);
+	right = merge_sort(next, cmp, data);
+	return (merge(left, right, cmp, data));
 }
 
-void	ft_lstsort(t_list *lst, t_lst_cmp fn)
+t_list	*ft_lstsort2(t_list *lst, t_lst_cmp2 cmp, void *data)
 {
-	ft_lstsort2(lst, (t_lst_cmp2)fn, NULL);
+	if (!lst || !lst->next)
+		return (lst);
+	return (merge_sort(lst, cmp, data));
+}
+
+t_list	*ft_lstsort(t_list *lst, t_lst_cmp fn)
+{
+	return (ft_lstsort2(lst, (t_lst_cmp2)fn, NULL));
 }

@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 19:18:34 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/26 19:58:23 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/27 18:23:04 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,16 @@ bool	vector_resize(t_vector *handle, size_t new_size)
 	else if (new_size < handle->size)
 	{
 		idx = 0;
-		while (idx < handle->size - new_size)
-			handle->deletef(vector_at(handle, new_size + idx++));
+		if (handle->deletef)
+			while (idx < handle->size - new_size)
+				handle->deletef(vector_at(handle, new_size + idx++));
 		handle->size = new_size;
 		return (true);
 	}
 	new_data = ft_calloc(new_size, handle->elem_size);
 	if (!new_data)
 		return (false);
-	ft_memmove(\
-		new_data, handle->data, \
+	ft_memmove(new_data, handle->data, \
 		handle->size * handle->elem_size \
 	);
 	free(handle->data);

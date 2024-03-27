@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 19:33:43 by mm                #+#    #+#             */
-/*   Updated: 2024/03/25 22:09:52 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/27 18:18:48 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ char	*ft_strlowercase(char *str);
 char	*ft_str_revcase(char *str);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
+char	*ft_strnrchr(const char *s, int c, size_t n);
 bool	ft_strchr_set(const char *str, const char *set);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_strcmp(const char *s1, const char *s2);
@@ -106,8 +107,8 @@ void	ft_lstiter2(t_list *lst, t_lst_iter2 f, void *data);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 t_list	*ft_lstfind(t_list *lst, t_lst_find f, void *data);
 void	ft_lstremove(t_list **list, t_list *node, void (*del)(void *));
-void	ft_lstsort(t_list *lst, t_lst_cmp cmp);
-void	ft_lstsort2(t_list *lst, t_lst_cmp2 cmp, void *data);
+t_list	*ft_lstsort(t_list *lst, t_lst_cmp cmp);
+t_list	*ft_lstsort2(t_list *lst, t_lst_cmp2 cmp, void *data);
 t_list	*ft_lstgoto_top(t_list **lst);
 t_list	*ft_lstgoto_end(t_list **lst);
 t_list	*ft_lstgoto(t_list **lst, int index);
