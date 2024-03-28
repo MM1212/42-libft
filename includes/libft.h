@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 19:33:43 by mm                #+#    #+#             */
-/*   Updated: 2024/03/27 21:24:20 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/28 15:02:33 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_isspace(int c);
-bool	ft_isnbr(char *str);
+bool	ft_isnbr(char *str, bool has_sign, bool floating);
 size_t	ft_strlen(const char *str);
 void	*ft_memset(void *s, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
