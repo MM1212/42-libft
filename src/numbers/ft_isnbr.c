@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:02:12 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/28 15:14:45 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/28 17:33:53 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ bool	ft_isnbr(char *str, bool signed_nbr, bool floating)
 	i = 0;
 	has_dot = !floating;
 	has_sign = !signed_nbr;
+	if (floating && str[i] == '.')
+		return (false);
 	while (str[i])
 	{
 		if (!symbols_check(str[i], i, &has_dot, &has_sign))
@@ -54,6 +56,8 @@ bool	ft_isnbr(char *str, bool signed_nbr, bool floating)
 		i++;
 	}
 	if (floating && !has_dot)
+		return (false);
+	if (floating && str[i - 1] == '.')
 		return (false);
 	return (true);
 }
