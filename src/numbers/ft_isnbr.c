@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:02:12 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/28 15:02:05 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/28 15:14:45 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static bool	symbols_check(char c, int i, bool *has_dot, bool *has_sign)
 	*Will correctly check positive, negative, zero, and/or floating point numbers.
 	*Doesn't support hexadecimal numbers.
  */
-bool	ft_isnbr(char *str, bool has_sign, bool floating)
+bool	ft_isnbr(char *str, bool signed_nbr, bool floating)
 {
 	int		i;
 	bool	has_dot;
@@ -46,12 +46,14 @@ bool	ft_isnbr(char *str, bool has_sign, bool floating)
 		return (false);
 	i = 0;
 	has_dot = !floating;
-	has_sign = !has_sign;
+	has_sign = !signed_nbr;
 	while (str[i])
 	{
 		if (!symbols_check(str[i], i, &has_dot, &has_sign))
 			return (false);
 		i++;
 	}
+	if (floating && !has_dot)
+		return (false);
 	return (true);
 }
