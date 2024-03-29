@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 19:33:43 by mm                #+#    #+#             */
-/*   Updated: 2024/03/28 15:02:33 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/29 22:24:42 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,5 +133,6 @@ typedef struct s_wildcard
 }	t_wildcard;
 
 bool	ft_wildcard_match(const char *pattern, const char *str);
+bool	ft_wildcard_match_n(const char *pattern, const char *str, size_t s_len);
 
 #endif
