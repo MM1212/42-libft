@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 00:07:03 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/31 13:38:46 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/31 14:59:26 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 static void	manage_padding(\
 	t_ft_sprintf_buffer *buffer, \
 	double n, \
-	t_ft_printf_flags flags, \
+	t_ft_printf_flags *flags, \
 	size_t *len \
 )
 {
 	*len = 0;
-	if (flags.precision == -1)
-		flags.precision = 6;
+	if (flags->precision == -1)
+		flags->precision = 6;
 	*len += ft_def_printf_count_float_digits(n);
 	if (n < 0 && (long)n == 0)
 		(*len)++;
-	*len = spf_output_padding(buffer, *len, flags, true);
-	flags.disabled = true;
+	*len = spf_output_padding(buffer, *len, *flags, true);
+	flags->disabled = true;
 }
 
 /*
@@ -42,23 +42,25 @@ size_t	spf_putfloat(\
 	double		dec;
 	int			i;
 
-	manage_padding(buffer, n, flags, &count);
+	manage_padding(buffer, n, &flags, &count);
 	if (n < 0 && (long)n == 0)
 		count += spf_putchar(buffer, '-', flags);
 	count += spf_putnbr(buffer, (long)n, flags);
+	if (n < 0)
+		n = -n;
 	if (flags.precision > 0)
 	{
 		count += spf_putchar(buffer, '.', flags);
-		dec = ft_absf(n - ft_abs((long)n));
-		i = flags.precision;
-		while (i-- > 0)
-		{
-			dec *= 10;
-			if (i == 0 && (long)(dec * 10) % 10 >= 5)
-				dec += 10;
-			count += spf_putnbr(buffer, (long)dec, flags);
-			dec -= (long)dec;
-		}
+		dec = n - (long)n;
+		dec *= ft_pow(10, flags.precision);
+		if ((long)(dec * 10) % 10 >= 5)
+			dec += 1;
+		i = ft_sprintf(buffer->buffer, buffer->size, "%0*d", flags.precision, (long)dec);
+		if (i < 0)
+			return (0);
+		buffer->buffer += i;
+		buffer->size -= i;
+		count += i;
 	}
 	return (count);
 }
