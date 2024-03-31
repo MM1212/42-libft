@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 00:07:03 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/31 14:59:26 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/31 15:38:28 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,24 @@ static void	manage_padding(\
 	flags->disabled = true;
 }
 
-/*
-	Output a float number with the given precision.
- */
+
+static size_t put_decimal_part(\
+	t_ft_sprintf_buffer* buffer,
+	double dec,
+	t_ft_printf_flags flags
+)
+{
+	size_t count = 0;
+	size_t i;
+
+	count += spf_putchar(buffer, '.', flags);
+	i = ft_sprintf(buffer->buffer, buffer->size, "%0*d", flags.precision, (long)dec);
+	buffer->buffer += i;
+	buffer->size -= i;
+	count += i;
+	return (count);
+}
+
 size_t	spf_putfloat(\
 	t_ft_sprintf_buffer *buffer, \
 	double n, \
@@ -40,27 +55,24 @@ size_t	spf_putfloat(\
 {
 	size_t		count;
 	double		dec;
-	int			i;
+	size_t		precision;
 
 	manage_padding(buffer, n, &flags, &count);
 	if (n < 0 && (long)n == 0)
 		count += spf_putchar(buffer, '-', flags);
+	precision = ft_pow(10, flags.precision);
+	dec = (n - (long)n) * ft_pow(10, flags.precision);
+	if ((long)(dec * 10) % 10 >= 5)
+		dec += 1;
+	if (dec >= precision)
+	{
+		n += 1 / (double)precision;
+		dec = 0;
+	}
 	count += spf_putnbr(buffer, (long)n, flags);
 	if (n < 0)
 		n = -n;
 	if (flags.precision > 0)
-	{
-		count += spf_putchar(buffer, '.', flags);
-		dec = n - (long)n;
-		dec *= ft_pow(10, flags.precision);
-		if ((long)(dec * 10) % 10 >= 5)
-			dec += 1;
-		i = ft_sprintf(buffer->buffer, buffer->size, "%0*d", flags.precision, (long)dec);
-		if (i < 0)
-			return (0);
-		buffer->buffer += i;
-		buffer->size -= i;
-		count += i;
-	}
+		count += put_decimal_part(buffer, dec, flags);
 	return (count);
 }
