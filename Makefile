@@ -6,7 +6,7 @@
 #    By: martiper <martiper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 15:25:36 by martiper          #+#    #+#              #
-#    Updated: 2024/03/26 20:03:38 by martiper         ###   ########.fr        #
+#    Updated: 2024/03/31 13:59:55 by martiper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,10 @@ NBRS_SRCS =		numbers/ft_abs.c \
 				numbers/ft_atol.c \
 				numbers/ft_isnbr.c \
 				numbers/ft_nbrlen_base.c \
+				numbers/ft_floor.c \
+				numbers/ft_ceil.c \
+				numbers/ft_pow.c \
+				numbers/ft_round.c \
 
 STRINGS_SRCS =	strings/ft_countchar.c \
 				strings/ft_isdigit.c \

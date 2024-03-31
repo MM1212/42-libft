@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 19:33:43 by mm                #+#    #+#             */
-/*   Updated: 2024/03/31 11:17:46 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/31 13:57:32 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_list
 }	t_list;
 
 typedef long long	t_ft_ll;
+typedef long double	t_ft_ld;
 typedef void		(*t_lst_iter)(void *content);
 typedef void		(*t_lst_iter2)(void *content, void *data);
 typedef int			(*t_lst_cmp)(void *a, void *b);
@@ -67,6 +68,10 @@ char	*ft_strnstr(const char *big, const char *little, size_t len);
 int		ft_atoi(const char *nptr);
 long	ft_atol(const char *nptr);
 t_ft_ll	ft_atoll(const char *nptr);
+t_ft_ld	ft_ceil(t_ft_ld n);
+t_ft_ld	ft_floor(t_ft_ld n);
+t_ft_ld	ft_round(t_ft_ld n, int precision);
+t_ft_ld ft_pow(t_ft_ld n, t_ft_ld pow);
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strdup(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
