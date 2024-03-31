@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 00:07:03 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/31 14:59:46 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/31 15:34:54 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,28 @@ static void	manage_padding(\
 size_t	vfpf_putfloat(int fd, double n, t_ft_printf_flags flags)
 {
 	size_t		len;
-	double		dec;
+	long double		dec;
+	size_t		precision;
 
 	manage_padding(fd, n, &flags, &len);
 	if (n < 0 && (long)n == 0)
 		len += vfpf_putchar(fd, '-', flags);
+	precision = ft_pow(10, flags.precision);
+	dec = (n - (long)n) * precision;
+	if ((long)(dec * 10) % 10 >= 5)
+		dec += 1;
+	if (dec >= precision)
+	{
+		n += 1 / (double)precision;
+		dec = 0;
+	}
 	len += vfpf_putnbr(fd, (long)n, flags);
 	if (n < 0)
 		n = -n;
 	if (flags.precision > 0)
 	{
 		len += vfpf_putchar(fd, '.', flags);
-		dec = n - (long)n;
-		dec *= ft_pow(10, flags.precision);
-		if ((long)(dec * 10) % 10 >= 5)
-			dec += 1;
-		len += ft_printf("%0*d", flags.precision, (long)dec);
+		len += ft_printf("%0*d", flags.precision, (long)dec % precision);
 	}
 	return (len);
 }
