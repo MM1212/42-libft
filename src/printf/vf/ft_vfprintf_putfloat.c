@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 00:07:03 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/23 19:39:28 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/31 13:38:21 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ size_t	vfpf_putfloat(int fd, double n, t_ft_printf_flags flags)
 		vfpf_putchar(fd, '.', flags);
 		len++;
 		dec = ft_absf(n - ft_abs((long)n));
-		i = 0;
-		while (i < flags.precision)
-			i++;
+		i = flags.precision;
 		while (i-- > 0)
 		{
 			dec *= 10;
+			if (i == 0 && (long)(dec * 10) % 10 >= 5)
+				dec += 10;
 			len += vfpf_putnbr(fd, (long)dec, flags);
 			dec -= (long)dec;
 		}

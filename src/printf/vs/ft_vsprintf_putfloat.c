@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 00:07:03 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/23 19:41:03 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/31 13:38:46 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ size_t	spf_putfloat(\
 	{
 		count += spf_putchar(buffer, '.', flags);
 		dec = ft_absf(n - ft_abs((long)n));
-		i = 0;
-		while (i < flags.precision)
-			i++;
+		i = flags.precision;
 		while (i-- > 0)
 		{
 			dec *= 10;
+			if (i == 0 && (long)(dec * 10) % 10 >= 5)
+				dec += 10;
 			count += spf_putnbr(buffer, (long)dec, flags);
 			dec -= (long)dec;
 		}
