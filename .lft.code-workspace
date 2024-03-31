@@ -84,7 +84,7 @@
 		"vector.h": "c"
 	},
 	"files.exclude": {
-		"**/*.o": true,
+		"**/*.o": false,
 		"**/*.a": true,
 		"libs": true,
 		".*": true

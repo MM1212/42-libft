@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 19:33:43 by mm                #+#    #+#             */
-/*   Updated: 2024/03/29 22:24:42 by martiper         ###   ########.fr       */
+/*   Updated: 2024/03/31 11:17:46 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,22 +117,31 @@ void	ft_lstfclear(t_list **lst, void (*del)(void *));
 void	ft_lstadd_after(t_list **list, t_list *ref, t_list *node);
 void	ft_lstadd_before(t_list **list, t_list *ref, t_list *node);
 /* Wildcard Engine */
-
+typedef struct s_wildcard_flags
+{
+	size_t	s_len;
+	size_t	p_len;
+	bool	case_insensitive;
+}	t_wildcard_flags;
 /* Bruteforce Method */
 typedef struct s_wildcard
 {
-	const char	*str;
-	const char	*pattern;
-	size_t		s_len;
-	size_t		p_len;
-	size_t		s_idx;
-	size_t		p_idx;
-	int			last_wildcard_idx;
-	int			backtrack_idx;
-	int			next_to_wildcard_idx;
+	const char			*str;
+	const char			*pattern;
+	size_t				s_len;
+	size_t				p_len;
+	size_t				s_idx;
+	size_t				p_idx;
+	int					last_wildcard_idx;
+	int					backtrack_idx;
+	int					next_to_wildcard_idx;
+	t_wildcard_flags	flags;
 }	t_wildcard;
 
 bool	ft_wildcard_match(const char *pattern, const char *str);
-bool	ft_wildcard_match_n(const char *pattern, const char *str, size_t s_len);
+bool	ft_wildcard_match2(\
+	const char *pattern, const char *str, \
+	t_wildcard_flags flags \
+);
 
 #endif
