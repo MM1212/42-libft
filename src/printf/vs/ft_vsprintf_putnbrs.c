@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:15:07 by mm                #+#    #+#             */
-/*   Updated: 2024/04/02 17:09:12 by martiper         ###   ########.fr       */
+/*   Updated: 2024/04/02 18:18:01 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,34 +19,49 @@
 #define HEXA_CHARS_UPPER "0123456789ABCDEF"
 #define LONG_MAX_2 147483647
 
-size_t	spf_putnbr(\
+static size_t	putnbr_signed(\
 	t_ft_sprintf_buffer *buffer, \
-	long long n, \
+	signed long long n, \
 	t_ft_printf_flags flags \
 )
 {
-	char	*ptr;
+	size_t	count;
+
+	count = 0;
+	if (n >= 10)
+		count += putnbr_signed(buffer, n / 10, flags);
+	if (buffer->size > 0)
+		count += spf_putchar(buffer, NUMERIC_CHARS[n % 10], flags);
+	return (count);
+}
+
+size_t	spf_putnbr(\
+	t_ft_sprintf_buffer *buffer, \
+	signed long long n, \
+	t_ft_printf_flags flags \
+)
+{
 	size_t	count;
 	size_t	len;
 
 	count = 0;
-	ptr = ft_itoa(n);
-	if (!ptr)
-		return (0);
-	len = ft_strlen(ptr);
+	len = ft_def_printf_count_digits(n, true);
 	if (flags.space)
 		len++;
-	if (flags.positive && n > 0)
+	if ((flags.positive && n > 0))
 		len++;
 	count += spf_output_padding(buffer, len, flags, true);
 	flags.disabled = true;
-	if (flags.space && buffer->size > 0)
+	if (flags.space)
 		count += spf_putchar(buffer, ' ', flags);
-	if (flags.positive && n > 0 && buffer->size > 0)
+	else if (flags.positive && n > 0)
 		count += spf_putchar(buffer, '+', flags);
-	count += spf_putstr(buffer, ptr, flags);
-	free(ptr);
-	return (count);
+	if (n < 0)
+	{
+		count += spf_putchar(buffer, '-', flags);
+		n = -n;
+	}
+	return (putnbr_signed(buffer, n, flags) + count);
 }
 
 static size_t	putnbr_unsigned(\
@@ -78,14 +93,10 @@ size_t	spf_putnbr_unsigned(\
 	len = ft_def_printf_count_digits(n, false);
 	if (flags.space)
 		len++;
-	if (flags.positive)
-		len++;
 	count += spf_output_padding(buffer, len, flags, true);
 	flags.disabled = true;
 	if (flags.space)
 		count += spf_putchar(buffer, ' ', flags);
-	else if (flags.positive)
-		count += spf_putchar(buffer, '+', flags);
 	return (putnbr_unsigned(buffer, n, flags) + count);
 }
 
