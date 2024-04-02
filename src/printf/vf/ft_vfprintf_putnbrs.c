@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:15:07 by mm                #+#    #+#             */
-/*   Updated: 2024/04/02 18:18:07 by martiper         ###   ########.fr       */
+/*   Updated: 2024/04/02 22:23:45 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ size_t	vfpf_putnbr(\
 	size_t	len;
 
 	count = 0;
-	len = ft_def_printf_count_digits(n, true);
+	len = ft_def_printf_count_digits(n, true, 10);
 	if (flags.space)
 		len++;
 	if ((flags.positive && n > 0))
@@ -114,7 +114,7 @@ size_t	vfpf_unsigned(\
 	size_t	len;
 
 	count = 0;
-	len = ft_def_printf_count_digits(n, false);
+	len = ft_def_printf_count_digits(n, false, 10);
 	if (flags.space)
 		len++;
 	count += vfpf_output_padding(fd, len, flags, true);
@@ -154,8 +154,10 @@ size_t	vfpf_puthexadecimal(\
 	size_t	len;
 
 	count = 0;
-	len = ft_def_printf_count_digits(n, false);
-	if (!flags.hex_prefix || flags.pad_char == ' ')
+	len = ft_def_printf_count_digits(n, false, 16);
+	if (flags.hex_prefix)
+		len += 2;
+	if (flags.pad_char == ' ' || !flags.hex_prefix)
 		count += vfpf_output_padding(fd, len, flags, true);
 	flags.disabled = true;
 	if (flags.hex_prefix)

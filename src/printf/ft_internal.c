@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 21:50:19 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/23 22:19:03 by martiper         ###   ########.fr       */
+/*   Updated: 2024/04/02 22:13:56 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ t_ft_printf_flags	ft_def_printf_flags(\
 	return (flags);
 }
 
-size_t	ft_def_printf_count_digits(long long n, bool signed_value)
+size_t	ft_def_printf_count_digits(long long n, bool signed_value, int base)
 {
 	size_t	count;
 
@@ -111,7 +111,7 @@ size_t	ft_def_printf_count_digits(long long n, bool signed_value)
 	while (n > 0)
 	{
 		count++;
-		n /= 10;
+		n /= base;
 	}
 	return (count);
 }
