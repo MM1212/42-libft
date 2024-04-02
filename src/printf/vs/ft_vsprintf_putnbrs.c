@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:15:07 by mm                #+#    #+#             */
-/*   Updated: 2024/03/24 21:43:00 by martiper         ###   ########.fr       */
+/*   Updated: 2024/04/02 17:09:12 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,8 @@ static size_t	puthexadecimal(\
 	size_t	count;
 
 	count = 0;
-	if (n >= 10)
-		count += puthexadecimal(buffer, n / 10, upper, flags);
+	if (n >= 16)
+		count += puthexadecimal(buffer, n / 16, upper, flags);
 	if (upper)
 		count += spf_putchar(buffer, HEXA_CHARS_UPPER[n % 16], flags);
 	else
@@ -120,11 +120,8 @@ size_t	spf_puthexadecimal(\
 
 	count = 0;
 	len = ft_def_printf_count_digits(n, false);
-	if (flags.space)
-		len++;
-	if (flags.positive)
-		len++;
-	count += spf_output_padding(buffer, len, flags, true);
+	if (!flags.hex_prefix || flags.pad_char == ' ')
+		count += spf_output_padding(buffer, len, flags, true);
 	flags.disabled = true;
 	if (flags.hex_prefix)
 	{
@@ -132,6 +129,12 @@ size_t	spf_puthexadecimal(\
 			count += spf_putstr(buffer, "0X", flags);
 		else
 			count += spf_putstr(buffer, "0x", flags);
+		if (flags.pad_char == '0')
+		{
+			flags.disabled = false;
+			count += spf_output_padding(buffer, len, flags, true);
+			flags.disabled = true;
+		}
 	}
 	return (puthexadecimal(buffer, n, upper, flags) + count);
 }

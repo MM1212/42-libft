@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:15:07 by mm                #+#    #+#             */
-/*   Updated: 2024/03/24 21:36:29 by martiper         ###   ########.fr       */
+/*   Updated: 2024/04/02 17:07:11 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,18 +87,19 @@ size_t	vfpf_unsigned(\
 static size_t	puthexadecimal(\
 	int fd,
 	unsigned long long n, \
-	int upper \
+	int upper, \
+	t_ft_printf_flags flags
 )
 {
 	size_t	count;
 
 	count = 0;
 	if (n >= 16)
-		count += puthexadecimal(fd, n / 16, upper);
+		count += puthexadecimal(fd, n / 16, upper, flags);
 	if (upper)
-		count += write(1, &HEXA_CHARS_UPPER[n % 16], 1);
+		count += vfpf_putchar(fd, HEXA_CHARS_UPPER[n % 16], flags);
 	else
-		count += write(1, &HEXA_CHARS_LOWER[n % 16], 1);
+		count += vfpf_putchar(fd, HEXA_CHARS_LOWER[n % 16], flags);
 	return (count);
 }
 
@@ -114,9 +115,8 @@ size_t	vfpf_puthexadecimal(\
 
 	count = 0;
 	len = ft_def_printf_count_digits(n, false);
-	if (flags.hex_prefix)
-		len += 2;
-	count += vfpf_output_padding(fd, len, flags, true);
+	if (!flags.hex_prefix || flags.pad_char == ' ')
+		count += vfpf_output_padding(fd, len, flags, true);
 	flags.disabled = true;
 	if (flags.hex_prefix)
 	{
@@ -124,6 +124,12 @@ size_t	vfpf_puthexadecimal(\
 			count += vfpf_putstr(fd, "0X", flags);
 		else
 			count += vfpf_putstr(fd, "0x", flags);
+		if (flags.pad_char == '0')
+		{
+			flags.disabled = false;
+			count += vfpf_output_padding(fd, len, flags, true);
+			flags.disabled = true;
+		}
 	}
-	return (puthexadecimal(fd, n, upper) + count);
+	return (puthexadecimal(fd, n, upper, flags) + count);
 }

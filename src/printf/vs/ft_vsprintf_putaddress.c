@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:13:07 by mm                #+#    #+#             */
-/*   Updated: 2024/03/23 19:34:49 by martiper         ###   ########.fr       */
+/*   Updated: 2024/04/02 16:49:21 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ size_t	spf_putaddress(\
 	t_ft_printf_flags flags \
 )
 {
+	if (!addr)
+		return (spf_putstr(buffer, "(nil)", flags));
 	flags.hex_prefix = true;
 	return (spf_puthexadecimal(\
 		buffer, \

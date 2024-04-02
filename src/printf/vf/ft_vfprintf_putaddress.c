@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:13:07 by mm                #+#    #+#             */
-/*   Updated: 2024/03/23 14:29:10 by martiper         ###   ########.fr       */
+/*   Updated: 2024/04/02 16:46:30 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ size_t	vfpf_putaddress(\
 {
 	if (!address)
 		return (vfpf_putstr(fd, "(nil)", flags));
+	flags.hex_prefix = true;
 	return (vfpf_puthexadecimal(\
 		fd, \
 		(unsigned long long)address, \
