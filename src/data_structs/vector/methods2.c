@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 19:54:23 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/26 20:04:06 by martiper         ###   ########.fr       */
+/*   Updated: 2024/04/05 10:18:55 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ bool	vector_reserve(t_vector *handle, size_t new_capacity)
 	new_data = ft_calloc(new_capacity, handle->elem_size);
 	if (!new_data)
 		return (false);
-	ft_memmove(new_data, handle->data, handle->size * handle->elem_size);
+	if (handle->copy_after_resize)
+		ft_memmove(new_data, handle->data, handle->size * handle->elem_size);
 	free(handle->data);
 	handle->data = new_data;
 	handle->capacity = new_capacity;
@@ -37,7 +38,8 @@ bool	vector_shrink_to_fit(t_vector *handle)
 	new_data = ft_calloc(handle->size, handle->elem_size);
 	if (!new_data)
 		return (false);
-	ft_memmove(new_data, handle->data, handle->size * handle->elem_size);
+	if (handle->copy_after_resize)
+		ft_memmove(new_data, handle->data, handle->size * handle->elem_size);
 	free(handle->data);
 	handle->data = new_data;
 	handle->capacity = handle->size;

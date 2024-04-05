@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 19:00:21 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/26 22:46:20 by martiper         ###   ########.fr       */
+/*   Updated: 2024/04/05 10:18:00 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ struct s_vector
 	size_t					size;
 	size_t					capacity;
 	size_t					elem_size;
+	bool					copy_after_resize;
 	t_vector_delete_f		deletef;
 	t_vector_at				at;
 	t_vector_push_back		push_back;

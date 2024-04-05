@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 19:10:09 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/28 17:53:54 by martiper         ###   ########.fr       */
+/*   Updated: 2024/04/05 10:19:42 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ t_vector	*vector_create3(\
 	handle->elem_size = elem_size;
 	handle->capacity = capacity;
 	handle->deletef = delete_fn;
+	handle->copy_after_resize = true;
 	handle->data = ft_calloc(capacity, elem_size);
 	if (!handle->data && capacity > 0)
 	{
