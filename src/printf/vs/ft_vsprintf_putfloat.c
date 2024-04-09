@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 00:07:03 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/31 15:38:28 by martiper         ###   ########.fr       */
+/*   Updated: 2024/04/09 11:27:51 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,20 @@ static void	manage_padding(\
 	flags->disabled = true;
 }
 
-
-static size_t put_decimal_part(\
-	t_ft_sprintf_buffer* buffer,
+static size_t	put_decimal_part(\
+	t_ft_sprintf_buffer *buffer,
 	double dec,
 	t_ft_printf_flags flags
 )
 {
-	size_t count = 0;
-	size_t i;
+	size_t	count;
+	size_t	i;
 
-	count += spf_putchar(buffer, '.', flags);
-	i = ft_sprintf(buffer->buffer, buffer->size, "%0*d", flags.precision, (long)dec);
+	count = spf_putchar(buffer, '.', flags);
+	i = ft_sprintf(\
+		buffer->buffer, buffer->size, \
+		"%0*d", flags.precision, (long)dec \
+	);
 	buffer->buffer += i;
 	buffer->size -= i;
 	count += i;

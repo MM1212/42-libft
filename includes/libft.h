@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 19:33:43 by mm                #+#    #+#             */
-/*   Updated: 2024/03/31 13:57:32 by martiper         ###   ########.fr       */
+/*   Updated: 2024/04/09 11:31:18 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	*ft_memset(void *s, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
+void	ft_hexdump(void *ptr, size_t size, size_t dbpl);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 int		ft_toupper(int c);
@@ -71,7 +72,7 @@ t_ft_ll	ft_atoll(const char *nptr);
 t_ft_ld	ft_ceil(t_ft_ld n);
 t_ft_ld	ft_floor(t_ft_ld n);
 t_ft_ld	ft_round(t_ft_ld n, int precision);
-t_ft_ld ft_pow(t_ft_ld n, t_ft_ld pow);
+t_ft_ld	ft_pow(t_ft_ld n, t_ft_ld pow);
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strdup(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);

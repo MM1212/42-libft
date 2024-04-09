@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 00:07:03 by martiper          #+#    #+#             */
-/*   Updated: 2024/03/31 15:34:54 by martiper         ###   ########.fr       */
+/*   Updated: 2024/04/09 11:26:38 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	manage_padding(\
 size_t	vfpf_putfloat(int fd, double n, t_ft_printf_flags flags)
 {
 	size_t		len;
-	long double		dec;
+	long double	dec;
 	size_t		precision;
 
 	manage_padding(fd, n, &flags, &len);

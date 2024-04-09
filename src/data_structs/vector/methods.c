@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 19:18:34 by martiper          #+#    #+#             */
-/*   Updated: 2024/04/05 10:18:22 by martiper         ###   ########.fr       */
+/*   Updated: 2024/04/09 11:25:16 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,7 @@ bool	vector_resize(t_vector *handle, size_t new_size)
 		return (false);
 	if (handle->copy_after_resize)
 		ft_memmove(new_data, handle->data, \
-			handle->size * handle->elem_size \
-		);
+			handle->size * handle->elem_size);
 	free(handle->data);
 	handle->data = new_data;
 	handle->size = new_size;

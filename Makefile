@@ -6,7 +6,7 @@
 #    By: martiper <martiper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 15:25:36 by martiper          #+#    #+#              #
-#    Updated: 2024/03/31 13:59:55 by martiper         ###   ########.fr        #
+#    Updated: 2024/04/09 11:30:57 by martiper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,8 @@ MEMORY_SRCS =	memory/ft_bzero.c \
 				memory/ft_memcmp.c \
 				memory/ft_memcpy.c \
 				memory/ft_memmove.c \
-				memory/ft_memset.c
+				memory/ft_memset.c \
+				memory/ft_hexdump.c
 
 NBRS_SRCS =		numbers/ft_abs.c \
 				numbers/ft_atoi.c \

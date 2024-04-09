@@ -6,7 +6,7 @@
 /*   By: martiper <martiper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 21:48:09 by martiper          #+#    #+#             */
-/*   Updated: 2024/04/02 22:13:41 by martiper         ###   ########.fr       */
+/*   Updated: 2024/04/09 11:26:25 by martiper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ t_ft_printf_flags	ft_def_printf_flags(\
 	size_t *idx, \
 	va_list args \
 );
-size_t				ft_def_printf_count_digits(long long n, bool signed_value, int base);
+size_t				ft_def_printf_count_digits(\
+	long long n, bool signed_value, int base \
+);
 size_t				ft_def_printf_count_float_digits(double n);
 
 #endif
